@@ -1,0 +1,30 @@
+/* components/top-rate/top-rate.wxss */
+.rate{
+  padding-left: 30rpx;
+  margin: 40rpx 0;
+}
+.rate text{
+  font-size: 28rpx;
+  color: #626262;
+}
+.rate p{
+  margin: 0 20rpx;
+  width: 390rpx;
+  background: #f3f3f3;
+  vertical-align: middle;
+  position: relative;
+}
+.rate p,span{
+  display: inline-block;
+  height: 25rpx;
+  border-radius: 13rpx;
+}
+.rate p{
+  overflow: hidden;
+}
+.rate span{
+  background: #ffd656;
+  position: absolute;
+  top: 0;
+  left: 0;
+}

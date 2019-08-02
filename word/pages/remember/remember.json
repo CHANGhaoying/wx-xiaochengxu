@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "word-show": "../../components/word-show/word-show",
+    "top-rate": "../../components/top-rate/top-rate"
+  },
+  "navigationBarTitleText":"背单词"
+}

@@ -1,0 +1,36 @@
+<!--pages/sentence/note/note.wxml-->
+<view class='nav'>
+  <li wx:for="{{nav}}"
+      wx:key="{{index}}"
+      data-index="{{index}}"
+      bindtap='tapNav'
+      class='{{index==navCode && "active"}}'>
+    <text>{{item}}</text>
+  </li>
+</view>
+<view class='sentence-wrap' wx:for='{{sList}}' wx:key='{{index}}' hidden='{{sList.length == 0}}'>
+  <view class='breviary' bindtap='openSentence' 
+  data-index='{{index}}' wx:if='{{index != openCode}}'
+  data-col='{{item.is_collection}}' data-sid='{{item.sentence_id}}'>
+    <view>{{item.sentence_info.long_sentence}}</view>
+    <icon class='iconfont icon-rightarrow'></icon>
+  </view>
+  <view class='unfold' wx:else bindtap='closeSentence' id='scroll{{item.sentence_id}}'>
+    <wxs module='m1'>
+      var fn = function(str){
+         return str.split(" ")
+      };
+      module.exports.fn = fn;
+    </wxs> 
+    <sentence-show 
+      sentence='{{m1.fn(item.sentence_info.long_sentence)}}' 
+      son='{{item.sentence_info}}' col='{{col}}' 
+      userTranslation='{{item.translation}}'
+      bind:collect='collect' data-msg='{{item}}'/>
+  </view>
+</view>
+<view class='hint' hidden='{{!bottom}}'>———— 没有更多了 ————</view>
+<view class='kong' hidden='{{kongHide}}'>
+  <image src='http://202.85.213.24:8069/static/nocontent.png'></image>
+  <text>空空如也 ~~</text>
+</view>

@@ -1,0 +1,23 @@
+<!--pages/mine/userClass/userClass.wxml-->
+<view class='class-list' wx:if='{{myclass}}'>
+  <view wx:for='{{myclass}}' wx:key='{{index}}'>
+    <view class='left'>
+      <image src='https://apiwx.yanxian.org/static/img/class_src.png'></image>
+      <view>
+        <view>{{item.class_name}}</view>
+        <text>已有{{item.number}}人打卡</text>
+      </view>
+    </view>
+    <view class='right' bindtap='toClass' data-class_id='{{item.class_id}}'>
+      <button>去打卡</button>
+      <image src='../../../img/right.png'></image>
+    </view>
+  </view>
+</view>
+
+<view class='kong' wx:if='{{msg}}'>
+  <image src='http://202.85.213.24:8069/static/nocontent.png'></image>
+  <text>{{msg}}</text>
+</view>
+
+

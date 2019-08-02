@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "word-show": "../../../components/word-show/word-show"
+  },
+  "navigationBarTitleText": "单词本"
+}

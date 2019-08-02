@@ -1,0 +1,3 @@
+<!--pages/h5/h5.wxml-->
+<!-- http://m.ke.yanxian.org/ https://mk.yanxian.org/-->
+<web-view src='{{url}}'></web-view>

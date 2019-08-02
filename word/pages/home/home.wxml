@@ -1,0 +1,132 @@
+
+  <!-- 半透明遮罩 -->
+  <view class='cover' wx:if="{{coverPhone}}">
+    
+    <!-- 绑定手机号弹框 wx:if="{{allow && phone}}" -->
+    <view class='phone'>
+      <text>绑定手机号</text>
+      <view class='txt'>绑定手机号可以获取更多功能哦~</view>
+      <input placeholder='输入手机号' 
+        type="number" 
+        maxlength="11"
+        bindinput='iptNum'></input>
+      <view  class='group'>
+        <input placeholder='输入验证码'
+        type="number"
+        value='{{verificationCode}}'
+        bindinput='iptCode'></input>
+        <button bindtap='verify' disabled='{{codeTxt != "获取短信验证码"}}'>{{codeTxt}}</button>
+      </view>
+      <button bindtap='bindphone'>确定</button>
+    </view>
+  </view>
+
+  <!--用户授权-->
+  <view class='cover2' wx:if='{{coverAllow}}'>
+    <image src='https://apiwx.yanxian.org/static/success2.png'></image>
+    <text>您需要授权登录，才能开始使用</text>
+    <button 
+      bindgetuserinfo="allow"
+      open-type="getUserInfo"
+    >授权登录</button>
+  </view>
+
+<!-- 背景图区 -->
+<view class='bg'>
+  <view>
+    <view class="avatar-box">
+        <open-data type="userAvatarUrl"  wx:if='{{!coverAllow}}'></open-data>
+    </view>
+    <block wx:if='{{!coverAllow && info.is_teacher}}'>
+      <view class='username-box'>
+        <text>{{info.user_name}}</text>
+        <view wx:if='{{info.is_teacher == 2}}'
+          bindtap='toClass'
+          >班级情况<i class='iconfont icon-angle-right'></i></view>
+      </view>
+    </block>
+    <block wx:elif='{{!coverAllow}}'><open-data type="userNickName"></open-data></block>
+  </view>
+  <view bindtap='toStage'>
+    <text>{{info.stage_name || "选择阶段"}}</text>
+    <image src='../../img/cut.png'></image>
+    <!-- 小手图标 -->
+    <icon wx:if = "{{dianjiFlag}}"
+    class='iconfont icon-dianji' 
+    animation="{{animationData}}"></icon>
+  </view>
+</view>
+
+<!-- 卡片 -->
+<view class="card">
+  <swiper 
+    indicator-dots
+    indicator-active-color="#3252f5"
+    circular
+    autoplay
+  >
+    <swiper-item class='left-item'>
+      <view class='dk-title'>{{info.class_name}}单词打卡</view>
+      <view class='dk-num'>{{info.punch_days}}</view>
+      <view class='dk-txt'>打卡天数</view>
+      <view class='dk-section'>
+        <view class='today'>
+          <text>{{info.today_learned_number}}</text>
+          <text>今日已学</text>
+        </view>
+        <view class='grasp'>
+          <text>{{info.all_learned_number}}</text>
+          <text>已掌握</text>
+        </view>
+        <view class='new-words'>
+          <text>{{info.surplus_word}}</text>
+          <text>所剩新词</text>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item class='right-item'>
+      <view>我的学习记录</view>
+      <view class='month'>
+        <text class='cut' bindtap='prev'>《</text>
+        <text>{{year}} 年 {{month+1}} 月</text>
+        <text class='cut next' bindtap='next'>》</text>
+      </view>
+      <view class='day'>
+        <text>日</text>
+        <text>一</text>
+        <text>二</text>
+        <text>三</text>
+        <text>四</text>
+        <text>五</text>
+        <text>六</text>
+      </view>
+      <view class='date'>
+        <view wx:for='{{kong}}' wx:key='{{index}}'></view>
+        <view wx:for='{{days}}' 
+          wx:key='{{index}}' 
+          class='{{item && "is-day"}}'>
+          <text>{{index+1}}</text></view>
+      </view>
+    </swiper-item>
+      
+  </swiper>
+</view>
+
+<button class='to-study' bindtap='toStudy'>开始学习</button>
+
+<view class='foot-nav'>
+  <!-- <view>
+    <image src='../../img/cnj.png' class='cnj'></image>
+    <text>长难句</text>
+  </view> -->
+  <view bindtap="toPhb">
+    <image src='../../img/phb.png' class='phb'></image>
+    <text>排行榜</text>
+  </view>
+  <view bindtap='toBooklet'>
+    <image src='../../img/dcb.png' class='dcb'></image>
+    <text>单词本</text>
+  </view>
+</view>
+
+<!-- <view class='pointer-cover'></view> -->

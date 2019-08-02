@@ -1,0 +1,26 @@
+    <!--pages/sentence/study/study.wxml-->
+<view hidden='{{sentenceUnfold}}' class='study'>
+  <!-- 头部进度条 自定义组件 -->
+  <top-rate title='句子' rate='{{rate}}' fraction='{{list[i].son.currentNumber}}/{{list.count}}'/>
+  <view class='card'>
+    <view>
+      <text>长难句 {{list[i].group_name}}</text>
+      <icon class='iconfont icon-shoucang {{col==1 && "col"}}' 
+        bindtap='collect' data-msg='{{list[i]}}'
+        ></icon>
+    </view>
+    <view class='content'>
+      {{list[i].son.long_sentence}}
+    </view>
+  </view>
+  <form bindsubmit="bindFormSubmit">
+    <textarea placeholder='请输入你的译文' name='txt' placeholder-class='placeholder-style' show-confirm-bar='{{false}}' 
+    maxlength='-1' value='{{val}}'></textarea>
+    <button form-type='submit'>提 交</button>
+  </form>
+</view>
+<view hidden='{{!sentenceUnfold}}'>
+  <sentence-show sentence='{{sentence}}' userTranslation='{{userTranslation}}' col='{{col}}'
+  son='{{list[i].son}}' bind:next='next' bind:collect='collect' data-msg='{{list[i]}}'/>
+  <button class='next' bindtap='next' disabled='{{nextDisabled}}'>下 一 个</button>
+</view>

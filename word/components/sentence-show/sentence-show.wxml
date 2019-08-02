@@ -1,0 +1,132 @@
+<!--components/sentence-show/sentence-show.wxml-->
+<view class='unfold'>
+  <view class='sentence'>
+    <view class='headline'>
+      <image src='../../img/loop.png'></image>
+      <text>长难句</text>
+      <span>长按疑难单词可出现词义</span>
+      <icon class='iconfont icon-shoucang {{col==1 && "col"}}' 
+        catchtap='collect'
+        ></icon>
+    </view>
+    <view class='content'>
+      <text wx:for='{{sentence}}' wx:key='{{index}}' 
+      data-word='{{item}}' bindlongpress='getWord'
+      data-index='{{index}}' class='{{wordIndex == index && "get-word"}}'>{{item}}
+      </text>
+    </view>
+    <view class='user-translation'>{{userTranslation}}</view>
+  </view>
+  <view>
+    <view class='headline'>
+      <image src='../../img/loop.png'></image>
+      <text>答案解析</text>
+    </view>
+    <view class='diff-word'>
+      <h3>【单词解析】</h3>
+      <view>
+        <view wx:for='{{son.word_parsing}}' wx:key='{{index}}'>
+          <text>{{index+1}}. {{item.english_word}} {{item.us_phonetic}}</text>
+          <icon class='iconfont icon-shengyin' catchtap='play' data-src='{{item.us_audio}}'></icon>
+          <text wx:for='{{item.chinese_word}}' wx:key='{{index}}'>{{item}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='sentence-part'>
+       <h3>【句子拆分】</h3>
+       <view class='content'>
+          <block wx:for='{{son.sentence_splitting}}' wx:key='{{index}}'>
+            <text wx:if='{{item.type==1}}' class='subject'>{{item.title}} </text>
+            <text wx:elif='{{item.type==2}}' class='predicate'>{{item.title}} </text>
+            <text wx:elif='{{item.type==3}}' class='object'>{{item.title}} </text>
+            <text wx:elif='{{item.type==4}}'>({{item.title}}) </text>
+            <text wx:elif='{{item.type==5}}'>[{{item.title}}] </text>
+            <text wx:elif='{{item.type==6}}'>{{"{"+item.title+"}"}} </text>
+            <text wx:elif='{{item.type==7}}' class='appositive'>{{item.title}} </text>
+            <text wx:else>{{item.title}} </text>
+          </block>
+       </view>
+       <view class='element'>
+          <view class='ele1'>
+            <h4>成分分析：</h4>
+            <view>
+              <block wx:for='{{son.sentence_splitting}}' wx:key='{{index}}'>
+                <text wx:if="{{item.type==1}}" class='subject'>主</text>
+                <text wx:elif="{{item.type==2}}" class='predicate'>谓</text>
+                <text wx:elif="{{item.type==3}}" class='object'>宾</text>
+                <text wx:elif="{{item.type==4}}">(定)</text>
+                <text wx:elif="{{item.type==5}}">[状]</text>
+                <text wx:elif="{{item.type==6}}">{补}</text>
+                <text wx:elif="{{item.type==7}}" class='appositive'>同位</text>
+              </block> 
+            </view>
+          </view>
+          <view class='ele2'>
+            <h4>符号说明</h4>
+            <view>
+              <text>1.主语：下划线</text>
+              <text>2.谓语：双下划线</text>
+              <text>3.宾语：下划线</text>
+              <text>4.定语：圆括号</text>
+              <text>5.状语：方括号</text>
+              <text>6.补语：花括号</text>
+              <text>7.同位语：虚线</text>
+            </view>
+          </view>
+       </view>
+    </view>
+    <view class='txt'>
+      <h3>【语法分析】</h3>
+       <view class='content'>
+          {{son.parsing}}
+       </view>
+    </view>
+    <view class='text txt'>
+      <h3>【参考译文】</h3>
+       <view class='content'>
+          {{son.translation}}
+       </view>
+    </view>
+    <view class='text txt'>
+      <h3>【考情分析】</h3>
+       <view class='content'>
+          {{son.analysis}}
+       </view>
+    </view>
+  </view>
+</view>
+
+<view class='cover' hidden='{{!cover}}' catchtap='none'>
+  <view style='height: {{height}}px' class='sash-window'>
+    <view bindtouchstart='start' catchtouchmove='move' class='top-btn'>
+      <span></span><span></span>
+    </view> 
+    <icon class='iconfont icon-guanbi' catchtap='close'></icon>
+    <block wx:if='{{get_word}}'>
+      <view hidden='{{wordData.length==0 || !wordData.msg}}' class='msg'>暂未收录该单词</view> 
+      <view hidden='{{wordData.length==0 || wordData.msg}}' class='sash-window-body'>
+        <view>
+          <text class='word'>{{wordData.english_word}}</text>
+          <view class='soundmark'>
+            <text>{{wordData.us_phonetic}}</text><!--音标-->
+            <i class='iconfont icon-shengyin' catchtap='play' data-src='{{wordData.us_audio}}'></i>
+          </view>
+          <view class='meaning'>
+            <p wx:for="{{wordData.chinese_word}}" wx:key='{{index}}'>{{item}}</p>
+          </view>
+        </view>
+        
+        <view class='example'>  
+          <h1>例句：</h1>
+          <view wx:for='{{wordData.sentence}}' wx:key='{{index}}'>
+            <p>{{index+1}}、{{item.englishtitle}}</p>
+            <p>{{item.chinesetitle}}</p>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class='msg'>只识别英文单词</view>
+    </block>
+  </view>
+</view>

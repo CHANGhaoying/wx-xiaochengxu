@@ -1,0 +1,67 @@
+/* pages/sentence/study/study.wxss */
+page{
+  position: relative;
+}
+.study{
+  padding-bottom: 30rpx;
+}
+.card{
+  width: 642rpx;
+  margin: 0 auto;
+  border-radius: 20rpx;
+  box-shadow: 0 0 25rpx #ddd;
+  padding: 40rpx;
+  box-sizing: border-box;
+}
+.card>view:first-child{
+  font-size: 36rpx;
+  color: #191919;
+}
+.icon-shoucang{
+  color: #ddd;
+  font-size: 36rpx;
+  float: right;
+  margin: -10rpx 20rpx 0 0;
+}
+.col{color: #ffd656;}
+.content{
+  font-size: 34rpx;
+  color: #626262;
+  margin: 40rpx 0 20rpx;
+  line-height: 50rpx;
+}
+form textarea{
+  border: 1rpx solid #ddd;
+  border-radius: 20rpx;
+  width: 642rpx;
+  height: 300rpx;
+  margin: 40rpx auto;
+  font-size:30rpx;
+  box-sizing: border-box;
+  padding: 30rpx;
+}
+.placeholder-style{
+  color:#b4b4b4;
+}
+form button{
+  width: 460rpx;
+  height: 78rpx;
+  line-height: 78rpx;
+  margin: 0 auto;
+  color: #3e3e3e;
+  font-size: 34rpx;
+  background: #ffd656;
+  border-radius: 39rpx;
+}
+button.next{
+  background: #ffd656;
+  margin:60rpx 0 0;
+  height: 86rpx;
+  line-height: 86rpx;
+  font-size: 34rpx;
+  color: #3e3e3e;
+  border-radius:0;
+}
+button::after{
+  border: none;
+}

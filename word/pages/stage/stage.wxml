@@ -1,0 +1,51 @@
+<!--pages/stage/stage.wxml-->
+<block wx:if='{{moduleFlag}}'>
+  <view class='kong' wx:if = '{{kongMsg}}'>
+    <image src='http://202.85.213.24:8069/static/nocontent.png'></image>
+    <text>{{kongMsg}}</text>
+  </view> 
+  <view class='section' wx:else>
+    <!-- 阶段 -->
+    <view class='cihui {{index == 0 && "common"}} {{index == 1 && "xiaoka"}}' 
+      wx:for="{{list}}" wx:key='{{index}}'>
+      <h1>{{item.stage_name}}</h1>
+      <view wx:for='{{item.son}}'
+        wx:for-item='sonItem'
+        wx:for-index='sonIndex'
+        wx:key="{{sonIndex}}"
+        data-id="{{sonItem.id}}"
+        bindtap='toXKwords'>
+        <image src='https://apiwx.yanxian.org/static/image/cover{{sonItem.id}}.png'></image>
+        <view>
+          <h2>{{sonItem.stage_name}}</h2>
+          <p>{{sonItem.stage_desc}}</p>
+          <p>
+            <text>{{sonItem.group_num}}组</text>
+            <text>共{{sonItem.word_num}}个{{moduleCode==3?'句子':'单词'}}</text>
+            <text>已练习{{sonItem.alreadyNum}}</text>
+          </p>
+        </view>
+        <!-- 右上角黄色标签 -->
+        <view class='lable'>
+          <!-- {{sonItem.stageName}} -->
+          <view>荣誉</view>
+          <view>勋章</view>
+          <span class='top'></span>
+          <span class='left'></span>
+          <span class='right'></span>
+        </view>
+      </view>
+    </view>
+    <button bindtap='toStudy' class='to-study'>开始学习</button>
+  </view>
+</block>
+<block wx:else>
+  <view class='module'>
+    <text>请选择学习题型</text>
+    <view>
+      <view wx:for="{{moduleList}}" wx:key='{{index}}'>
+        <image src='https://apiwx.yanxian.org/static/image/m{{item.id}}.png' bindtap='module' data-stage='{{item.id}}'></image>
+      </view>
+    </view>
+  </view>
+</block>

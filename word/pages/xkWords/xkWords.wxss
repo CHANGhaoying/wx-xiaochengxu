@@ -1,0 +1,103 @@
+/* pages/xkWords/xkWords.wxss */
+.banner image{
+  width: 189rpx;
+  height: 187rpx;
+  display: block;
+  margin: 38rpx auto 44rpx;
+}
+.banner{
+  text-align: center;
+  margin-bottom: 90rpx;
+}
+.banner view:nth-child(2){
+  font-size: 36rpx;
+  color: #242424;
+}
+.banner view:last-child{
+  font-size: 28rpx;
+  color: #9d9d9d;
+  margin: 24rpx 0 0;
+}
+.section{
+  background: #f0f0f0;
+  border: 1rpx solid #f0f0f0;
+}
+.section .notice{
+  height: 140rpx;
+  color: #fff;
+  background:#f66c6c;
+  width: 91%;
+  margin: -70rpx auto 25rpx;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 20rpx;
+  padding: 0 25rpx;
+}
+.notice image{
+  width: 90rpx;
+  height: 90rpx;
+}
+.notice view{
+  flex:1;
+  padding: 20rpx 0 20rpx 25rpx;
+  font-size: 28rpx;
+}
+
+.section>view{ 
+  padding-left: 72rpx; 
+}
+.section text{
+  margin-left: 20rpx;
+  color: #242424;
+  line-height: 54rpx;
+  font-size: 30rpx;
+}
+.btn-again{
+  float:right;
+  background: #f66c6c;
+  color: #fff;
+  height: 40rpx;
+  line-height: 40rpx;
+  border-radius: 22rpx;
+  margin-right: 80rpx;
+  padding: 0 20rpx;
+  font-size: 22rpx;
+}
+.rate{
+  height: 54rpx;
+  display: flex;
+  margin: 18rpx 0 60rpx 0;
+}
+.rate p{
+  display: block;
+  width: 510rpx;
+  height: 100%;
+  border: 1rpx solid #e4e4e4;
+  border-radius: 28rpx;
+  background: #fff;
+  overflow: hidden;
+}
+.rate p span{
+  display: block;
+  height: 100%;
+  background: #ffd565;
+}
+.section .foot{
+  padding: 58rpx 0 104rpx;
+  display: flex;
+}
+.foot button{
+  width: 289rpx;
+  height: 90rpx;
+  background: #4bb163;
+  color: #fff;
+  border-radius: 45rpx;
+  font-size: 36rpx;
+}
+.foot button:last-child{
+  background: #f66c6c;
+}
+.foot button::after{
+  border: none;
+}

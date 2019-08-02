@@ -1,0 +1,61 @@
+/* 排行榜rankinglist */
+.rankinglist .item{
+  border-top: 1rpx solid #ddd;
+  display: flex;
+  align-items: center;
+  margin: 0 40rpx; 
+  position: relative;
+  padding: 50rpx 0 30rpx;
+}
+.rankinglist .first{
+  border: none;
+}
+
+.rankinglist .item image{
+  width: 84rpx;
+  height: 84rpx;
+  border-radius: 50%;
+}
+.rankinglist .item>view{
+  margin: 0 20rpx ;
+  color: #626262;
+  font-size: 24rpx;
+}
+
+.rankinglist .item .num{
+  font-size: 30rpx;
+  color: #3e3e3e;
+  width: 50rpx;
+}
+.rankinglist .item .nickname{
+  color: #2b2b2b;
+  font-size: 28rpx;
+  margin-bottom: 10rpx;
+}
+.rankinglist .item .days{
+  position: absolute;
+  right: 20rpx;
+  bottom: 38rpx;
+}
+.rankinglist .top image{
+  width: 90rpx;
+  height: 90rpx;
+}
+.rankinglist .top .num{
+  font-size: 36rpx;
+}
+.rankinglist .top .nickname{
+  font-size: 34rpx;
+}
+
+.rankinglist .crown-box{
+  position: relative;
+}
+.rankinglist .item .crown{
+  width: 104rpx;
+  height: 104rpx;
+  position: absolute;
+  border: 0;
+  left: -35rpx;
+  top: -35rpx;
+}

@@ -1,0 +1,127 @@
+/* pages/class/class.wxss */
+page{
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.class{
+  padding-top: 190rpx;
+}
+
+.top{
+  height: 130rpx;
+  font-size: 32rpx;
+  color: #323232;
+  border-bottom: 1rpx solid #eee;
+  z-index: 5;
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  top:0;
+}
+.top i{
+  font-size: 22rpx;
+  color: #626262;
+  margin-left: 20rpx;
+}
+.top,
+.class-msg,
+.students{
+  display: flex;
+  padding: 0 58rpx;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+.class-msg{
+  height:56rpx;
+  background: #f6f6f6;
+  color: #858585;
+  font-size: 24rpx;
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+  top:130rpx;
+}
+.class-msg view:first-child text{
+  margin-right: 60rpx;
+}
+.class-msg i{
+  margin-left: 10rpx;
+  font-size: 24rpx;
+}
+.students{
+  color:#626262;
+  font-size: 26rpx;
+  height: 166rpx;
+  border-bottom: 2rpx solid #eee;
+}
+.students>view{
+  width: 216rpx;
+}
+.students>text{
+  width: 200rpx;
+}
+.students>text:last-child{
+  width: 150rpx;
+}
+.students image{
+  width: 70rpx;
+  height:70rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 25rpx;
+}
+.students span{
+  font-size: 28rpx;
+  color: #2b2b2b;
+}
+
+/* 筛选页面 */
+.section{
+  height: 71%;
+  width: 100%;
+  border-top: 1rpx solid #eee;
+  flex: 1;
+  display: flex;
+  position: absolute;
+  top:130rpx;
+  z-index: 3;
+  
+}
+.aside{
+  width: 274rpx;
+  height: 100%;
+  background:#e7e7e7;
+}
+/* .aside-bg{
+  background:#e7e7e7;
+} */
+.aside view{
+  height: 98rpx;
+  line-height: 98rpx;
+  border-bottom: 2rpx solid #fff;
+  text-align: center;
+  font-size: 34rpx;
+  color: #323232;
+}
+
+.aside .active{
+  background: #fafafa;
+}
+.group{
+  flex: 1;
+  background: #fff;
+  overflow: auto;
+}
+.group view{
+  border-bottom: 1rpx solid #eee;
+  height: 84rpx;
+  line-height: 84rpx;
+  color: #838383;
+  font-size: 26rpx;
+  padding: 0 64rpx;
+}
+.group i{
+  float: right;
+}

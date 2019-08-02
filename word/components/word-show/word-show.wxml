@@ -1,0 +1,80 @@
+<view class='word-show' bindtap='shut' wx:if='{{data.type==1}}'>
+  <i class='iconfont icon-shoucang {{col==1 &&"col"}}' catchtap='collect'></i>
+  <view>
+    <text class='word'>{{data.son.english_word}}</text>
+    <view class='soundmark'>
+      <text>{{data.son.us_phonetic}}</text><!--音标-->
+      <i class='iconfont icon-shengyin' catchtap='play' data-src='{{data.son.us_audio}}'></i>
+    </view>
+    <view class='meaning'>
+      <p wx:for="{{data.son.chinese_word}}" wx:key='{{index}}'>{{item}}</p>
+    </view>
+  </view>
+  
+  <view class='example'>  
+    <h1>例句：</h1>
+    <view wx:for='{{data.son.sentence}}' wx:key='{{index}}'>
+      <p>{{index+1}}、{{item.englishtitle}}</p>
+      <p>{{item.chinesetitle}}</p>
+      <!-- 例句喇叭图标 -->
+      <!-- <i class='iconfont icon-shengyin' catchtap='play' data-src='{{item.radioaddress}}'></i> -->
+    </view>
+  </view>
+</view>
+
+<!-- 一词多义 3-->
+<view class='word-show' bindtap='shut' wx:if='{{data.type==3}}'>
+  <i class='iconfont icon-shoucang {{col==1 &&"col"}}' catchtap='collect' ></i>
+  <text class='word'>{{data.son.english_word}}</text>
+  <view class='soundmark'>
+    <text>{{data.son.us_phonetic}}</text>
+    <i class='iconfont icon-shengyin' catchtap='play' data-src='{{data.son.us_audio}}'></i>
+  </view>
+  <view class='meaning polyseme' wx:for='{{data.son.sentence}}' wx:key='{{index}}'>
+    <text class='serial-num'>{{index+1}}</text>
+    <p>{{item.attribute}}</p>
+    <p>{{item.englishtitle}}</p>
+    <p>{{item.chinesetitle}}</p>
+  </view>
+</view>
+
+<!-- 熟词僻义 4-->
+<view class='word-show' bindtap='shut' wx:if='{{data.type==4}}'>
+  <i class='iconfont icon-shoucang {{col==1 &&"col"}}' catchtap='collect' ></i>
+  <text class='word'>{{data.son.english_word}}</text>
+  <view class='soundmark'>
+    <text>{{data.son.us_phonetic}}</text>
+    <i class='iconfont icon-shengyin' catchtap='play' data-src='{{data.son.us_audio}}'></i>
+  </view>
+  <view class='meaning polyseme uncommon' wx:for='{{data.son.sentence}}' wx:key='{{index}}'>
+    <text class='serial-num-red serial-num' wx:if='{{item.ripe == 2}}'>僻义</text>
+    <text class='serial-num' wx:else>熟义</text>
+    <p>{{item.attribute}}</p>
+    <p>{{item.englishtitle}}</p>
+    <p>{{item.chinesetitle}}</p>
+  </view>
+</view>
+
+<!-- 同义词 2-->
+<h2 wx:if='{{data.type==2}}'>{{data.son.english_word}}</h2>
+<view class='word-show synonyms' bindtap='shut' wx:if='{{data.type==2}}'>
+  <i class='iconfont icon-shoucang {{col==1 &&"col"}}' catchtap='collect'></i>
+  <view style='{{index==0 && "border:none;"}}' wx:for='{{data.son.detail}}' wx:key='{{index}}'>
+    <text class='{{index==data.son.answer[0] && "serial-num-red"}} serial-num'>{{letters[index]}}</text>
+    <text class='word'>{{item.english_word}}</text>
+    <view class='soundmark'>
+      <text>{{item.us_phonetic}}</text>
+      <i class='iconfont icon-shengyin' catchtap='play' data-src='{{item.us_audio}}' wx:if='{{item.us_audio}}'></i>
+    </view>
+    <view class='meaning'>
+      <p wx:for='{{item.chinese_word}}' wx:key='{{index}}'>{{item}}</p>
+    </view>
+    <view class='example'>  
+      <h3>例句：</h3>
+      <view wx:for='{{item.sentence}}' wx:key='{{index}}'>
+        <p>{{item.englishtitle}}</p>
+        <p>{{item.chinesetitle}}</p>
+      </view>
+    </view>
+  </view>
+</view>

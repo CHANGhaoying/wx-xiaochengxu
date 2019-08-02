@@ -1,0 +1,64 @@
+/* pages/mine/userClass/userClass.wxss */
+.class-list{
+  padding-top:30rpx;
+}
+.class-list>view{
+  display: flex;
+  justify-content: space-between;
+  padding: 40rpx 60rpx;
+  border-bottom: 16rpx solid #F8F8F8;
+   
+}
+.left{
+  display: flex;
+  font-size: 32rpx;
+  color: #242424;
+  align-items: center;
+}
+.left text{
+  font-size: 24rpx;
+  color: #898989;
+}
+.left image{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 12rpx;
+  margin-right: 30rpx;
+}
+.right{
+  display: flex;
+  align-items: center;
+}
+.right button{
+  width: 120rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 22rpx;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  background: #7182d9;
+  color: #fff;
+}
+
+.right button::after{
+  border: none;
+}
+.right image{
+  width: 20rpx;
+  height: 40rpx;
+  margin-left: 70rpx;
+}
+
+.kong{
+  text-align: center;
+  color: #C0C0C0;
+  font-size: 32rpx;
+  padding-top: 30rpx;
+}
+.kong image{
+  width: 280rpx;
+  height: 280rpx;
+  display: block;
+  margin: 0 auto 20rpx;
+}

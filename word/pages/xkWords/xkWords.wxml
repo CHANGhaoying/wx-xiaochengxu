@@ -1,0 +1,30 @@
+<!--pages/xkWords/xkWords.wxml-->
+<view class='xk-words'>
+  <view class='banner'>
+   <image src='https://apiwx.yanxian.org/static/image/xz{{stageId}}.png'></image>
+   <view>{{dat.stage_name}}共{{dat.group_num}}组，{{dat.word_num}}个{{moduleCode==3?'句子':'单词'}}</view>
+   <view>{{stage}}您已练习{{dat.history_group_count}}组，共{{dat.history_word_count}}个{{moduleCode==3?'句子':'单词'}}</view>
+  </view>
+  <!-- <view class='notice'>
+    <icon class="iconfont icon-jingshi"></icon>
+    <view>重新来过某一组单词后，下次开始学习会根据该次学习的位置开始，如需学习新组，请重新来过最后一组往下进行！！！</view>
+  </view> -->
+  <view class='section'>
+    <view class='notice'>
+      <image src="../../img/laba.png"></image>
+      <view>点击某组“ 重新来过 ”系统默认从该组依次向下的顺序进行学习哦~~</view>
+    </view>
+    <view wx:for='{{dat.each_group_data}}' wx:key='{{index}}'>
+      <text>{{item.group_name}}</text>
+      <i class='btn-again' wx:if='{{item.already_group_num / item.word_num >= 1}}' bindtap='again' data-groupid='{{item.id}}'>重新来过</i>
+      <view class='rate'>
+        <p><span style='width: {{item.word_num==0 ? 0 : item.already_group_num/item.word_num*100}}%;'></span></p>
+        <text>{{item.already_group_num}}/{{item.word_num}}</text>
+      </view>
+    </view>
+    <view class='foot'>
+      <button bindtap='toStudy'>开始练习</button>
+      <button bindtap='toBooklet' hidden='{{moduleCode == 3}}'>错题本</button>
+    </view>
+  </view>
+</view>

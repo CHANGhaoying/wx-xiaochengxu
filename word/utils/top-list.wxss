@@ -1,0 +1,189 @@
+/* tap导航 */
+.tap-control{
+  border-bottom: 5rpx solid #eee;
+  font-size: 30rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  display: flex;
+  padding: 0 40rpx;
+}
+.tap-control view{
+  margin-right: 30rpx;
+  color: #ccc;
+}
+.tap-control view:last-child{
+  left: 240rpx;
+}
+.tap-control .active{
+  color: #202222;
+  border-bottom: 5rpx solid #3a4ef3;
+}
+
+page .tap-control-position{
+  position: fixed;
+  top:0;
+  left: 0;
+  background: #fff;
+  width: 100%;
+  margin: 0;
+  z-index: 100;
+}
+.list{
+  padding: 0;
+}
+.list-item{
+  border-top: 5rpx solid #eee;
+  padding: 40rpx 50rpx 65rpx; 
+}
+.list-item>view:first-child{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+.list-item>text{
+  font-size: 30rpx; 
+  color:#666;
+}
+.list-item .top-avatar-box{
+  flex: 1;
+  display: flex;
+}
+.top-avatar-box view{
+  flex: 1;
+  padding-top: 10rpx;
+  box-sizing: border-box;
+  font-size: 32rpx;
+  color: #202222;
+}
+.list-item .top-avatar{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.top-avatar-box view text:last-child{
+  font-size: 24rpx; 
+  display: block;
+  color: #999;
+  margin-top:6rpx;
+}
+
+.top-avatar-box+view{
+  width: 170rpx;
+  position: relative;
+  overflow: hidden;
+}
+.top-avatar-box+view image{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-right: -10rpx;
+  position: absolute;
+  z-index: 4;
+  top:8rpx;
+}
+.top-avatar-box+view .team2{
+  left: 35rpx;
+  z-index: 3
+}
+.top-avatar-box+view .team3{
+  left: 70rpx;
+  z-index: 2;
+}
+.top-avatar-box+view icon{
+  position: absolute;
+  font-size: 36rpx;
+  right: 0;
+  color: #666;
+}
+.comment{
+  margin-top:50rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+.comment .title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width:100%;
+}
+.comment .title text{
+  font-size: 24rpx;
+}
+.comment .title .lz{
+  display: flex;
+}
+.lz view{
+  margin-right: 40rpx;
+}
+.comment image{
+  vertical-align: top;
+  margin-right: 15rpx;
+}
+.zan{
+  width: 40rpx;
+  height: 36rpx;
+}
+.lun{
+  width: 38rpx;
+  height: 38rpx;
+}
+.comment .content{
+  border-radius: 5rpx;
+  background:#f8f9f9;
+  margin-top:30rpx;
+  padding: 15rpx 0 0;
+  position: relative;
+}
+.comment .content>view{
+  padding: 20rpx;
+}
+.comment .content .dialogue{
+  padding-bottom: 10rpx;
+}
+.border-top{ border-top: 2rpx solid #eee;}
+.dialogue view{
+  padding: 0 0 20rpx;
+}
+.dialogue view text{
+  color: #202222;
+}
+/* <!-- 顶部小尖儿 --> */
+.content span{
+  position: absolute;
+  width: 0;
+  height: 0;
+  top:-38rpx;
+  left: 20rpx;
+  border-color: transparent transparent #f8f9f9 transparent;
+  border-width:20rpx;
+  border-style: solid; 
+}
+
+/* 评论输入框 */
+.comment-form{
+  border: #637084 2rpx solid;
+  width: 99%;
+  line-height: 80rpx;
+  box-sizing: border-box;
+  background: #fff;
+  display: flex;
+  font-size: 30rpx;
+  position: fixed;
+  bottom: 0;
+  left: 5rpx;
+  z-index: 20;
+}
+.comment-form input{
+  flex: 1;
+  height: 80rpx;
+  padding: 0 15rpx;
+  font-size: 28rpx;
+}
+.comment-form text{
+  width: 100rpx;
+  text-align: center;
+  color: #07C160;
+  border-left: 2rpx solid #637084;
+}

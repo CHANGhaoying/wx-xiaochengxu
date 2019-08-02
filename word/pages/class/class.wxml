@@ -1,0 +1,59 @@
+<!--pages/class/class.wxml-->
+<view class='class'>
+  <view class='top'>
+    <text>{{classInfo.group_name}}打卡情况</text>
+    <view bindtap='tapFlag'>
+      <text>选组</text>
+      <i class='iconfont icon-arrow_down_full' wx:if='{{!flag}}'></i>
+      <i class='iconfont icon-quanxianfuzhi' wx:if='{{flag}}'></i>
+    </view>
+  </view>
+  <view class='class-msg'>
+    <view>
+      <text>本班共{{classInfo.total_people}}个人</text>
+      <text>共{{classInfo.total_studies}}人学习</text>
+    </view>
+    <view bindtap='sort'>
+      <text>排序</text>
+      <i class='iconfont icon-paixu'></i>
+    </view>
+  </view>   
+
+  <view class='students' 
+    wx:for='{{classList}}'
+    wx:key='{{index}}'
+    hidden='{{flag}}'>
+    <view>
+      <image src='{{item.avatar_url}}'></image>
+      <span>{{item.user_name}}</span>
+    </view>
+    <text>学习单词：{{item.already_studied}}</text>
+    <text>掌握：{{item.already_mastered}}</text>
+  </view>
+  <!-- 阶段 组 目录 -->
+  <view class='section' hidden='{{!flag}}'>
+    <view class='aside'>
+      <view wx:for='{{stageList}}'
+        wx:key = '{{index}}'
+        class="{{index== stageIndex && 'active'}}"
+        bindtap='tapStage'
+        data-id='{{item.id}}'
+        data-index='{{index}}'> 
+        {{item.stage_name}}
+      </view>
+    </view>
+    <view class='group'>
+      <view bindtap='filt' 
+        wx:for='{{stageList[stageIndex].group}}'
+        wx:key='{{index}}'
+        data-id='{{item.id}}'>
+        <text>{{item.group_name}}</text><!--咖位下的组-->
+          <i class='iconfont icon-angle-right'></i>
+      </view>
+
+    </view>
+    
+  </view>
+
+
+</view>

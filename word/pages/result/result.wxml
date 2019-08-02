@@ -1,0 +1,60 @@
+<!--pages/result/result.wxml-->
+<view class='result' wx:if='{{canvasFlag}}'>
+  <view class='card'>
+    <h1>{{dat.stage_name}}{{dat.group_name}}</h1>
+    <view class='img'>
+      <image src='{{dat.avatar_url}}'></image>
+      <view class='name'>{{dat.nick_name}}</view>
+      <view class='num'>坚持学习{{dat.punch_days==0?1:dat.punch_days}}天</view>
+    </view>
+    <view wx:if='{{moduleCode == 3}}' class='sentence'>
+      长难句已学 {{dat.sentence_number}} 句
+    </view>
+    <view class='percent' wx:else>
+      <view>正确率<text  class='t-left'>{{dat.true_rate}}</text></view>
+      <view>超过了全班<text>{{dat.class_true_rate}}</text></view>
+    </view>
+    <button bindtap='again'>重新来过</button>
+  </view>
+  <view class='btn-box'>
+    <button bindtap='nextGroup'>下一组{{stage}}</button>
+    <button bindtap='share' class='bounce-btn' animation="{{animationData}}"  wx:if='{{dat.clock_status==1}}'>分享战绩</button>
+    <button bindtap='clock' class='bounce-btn' animation="{{animationData}}" wx:else>发帖打卡</button>
+  </view>
+  <!-- 进阶弹窗 -->
+  <view class='cover' hidden='{{close}}'>
+    <icon class='iconfont icon-guanbi' bindtap='close'></icon>
+    <view>
+      <image src='https://apiwx.yanxian.org/static/image/jinji{{stageId}}.png'></image>
+      <view>恭喜进阶</view>
+      <text>恭喜获得新的勋章，加油，加油~~</text>
+    </view>
+  </view>
+</view>
+<!-- 海报  -->
+<view class='img-view' wx:else>
+  <icon class='iconfont icon-guanbi' bindtap='closeCanvas'></icon>
+  <image style='height:{{imgH}}px; width:{{imgW}}px;' src='{{canvasUrl}}'></image>
+  <button open-type='share' type='primary' size='mini' animation="{{animationData}}" class='leftBtn'>分享给好友</button>
+  <button size='mini' bindtap='save' class='rightBtn'>保存到相册</button>
+</view>
+<canvas canvas-id='myCanvas' style='height:{{canvasH}}px; width:{{canvasW}}px'></canvas>
+
+<!-- 我的打卡 -->
+<view class='myclock-box' wx:if='{{clock}}'>
+  <icon class='iconfont icon-guanbi' bindtap='closeClock'></icon>
+  <view class='myclock'>
+    <view>
+      <image src='../../img/warn.png'></image>
+      <text>Day{{dat.punch_days}} 单词天天背</text>
+    </view>
+    <i><image src='../../img/quotation.png'></image></i>
+    <form bindsubmit="bindFormSubmit">
+      <textarea placeholder="{{place1}}{{dat.stage_name}}{{dat.group_name}}{{place2}}" 
+      maxlength='50' name="textarea" bindinput='clock_ipt' show-confirm-bar='{{false}}'/>
+      <view>{{textLength}} / 50</view>
+      <button form-type="submit">打卡</button>
+    </form>
+  </view>
+  <view><!-- 我是底部灰色填充部分--> </view>
+</view>

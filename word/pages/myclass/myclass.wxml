@@ -1,0 +1,150 @@
+
+<!-- 背景图区 -->
+<view class='bg'>
+  <view>
+    <image src='https://apiwx.yanxian.org/static/img/class_src.png'></image>
+    <view class='classname-box'>
+      <view>{{Info.class_name}}</view>
+      <text>{{Info.class_desc}}</text>
+    </view>
+    <text class='btn added-btn' wx:if='{{status == 1}}'>已加入</text>
+  </view>
+</view>
+<!-- 卡片 -->
+<view class="card">
+  <view bindtap='toStage' class='stage'>
+    <!-- {{Info.stage_name || "选择阶段"}} -->
+    <text>选择类型</text>
+    <image src='../../img/cut2.png'></image>
+  </view>
+  <view>
+    <view class="avatar-box">
+        <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <text wx:if='{{Info.user_name}}'>{{Info.user_name}}</text>
+    <open-data type="userNickName" class='user-name' wx:if='{{!Info.user_name}}'></open-data>
+  </view>
+  <view class='num-show'>
+    <view>
+      <text>{{Info.punch_days}}</text>
+      <text>打卡天数</text>
+    </view>
+    <view>
+      <text>{{Info.today_learned_number}}</text>
+      <text>今日已学</text>
+    </view>
+    <view>
+      <text>{{Info.already_number}}</text>
+      <text>已掌握</text>
+    </view>
+  </view>
+  <button class='to-study' bindtap='toStudy'>开始学习</button>
+</view>
+<view class='tap-control {{scrollTop>tapControlTop && "tap-control-position"}}'>
+  <view class='{{index==indexCode && "active"}}'
+    wx:for='{{navTitle}}'
+    wx:key='{{index}}'
+    bindtap='tapNav'
+    data-index='{{index}}'
+  >{{item}}</view>
+</view>
+<!-- 今日没人打卡 数据空 -->
+<view class='kong' wx:if='{{errorMsg}}'>
+  <image src='http://202.85.213.24:8069/static/nocontent.png'></image>
+  <text>{{errorMsg}}</text>
+</view>
+<!-- 今日打卡 -->
+<view class='list' wx:elif='{{indexCode == 0 && todayList}}'>
+  <wxs module='m1'>
+    function fn(arr,pID){
+      for(var i = 0;i < arr.length;i ++){
+        if(arr[i].id == pID){
+          return arr[i].nick_name
+        }
+      }
+    };
+    function zanFn(arr,id){
+      var str = '0';
+      for(var i = 0;i < arr.length;i ++){
+        if(arr[i] == id){
+          return '1'
+        }
+      }
+      return str;
+    }
+    module.exports = {fn: fn,zanFn: zanFn}
+  </wxs>
+  <view class='list-item'
+  wx:for='{{todayList}}'
+  wx:key='{{index}}'
+  style='{{index == 0 && "border: none;"}}'>
+    <view>
+      <view class='top-avatar-box'>
+        <image src='{{item.avatar_url}}' class='top-avatar'></image>
+        <view>
+          <text>{{item.nick_name}}</text>
+          <text>{{item.class_name}}，已打卡{{item.punch_days}}天</text>
+        </view>
+      </view>
+    </view>        
+    <text>{{item.content}}</text>
+    <view class='comment'>
+      <view class='title'>
+        <view class='lz'>
+          <view bindtap='zan' data-id='{{item.id}}'>
+            <image src='../../img/module/zan{{m1.zanFn(zanArr,item.id)}}.png' class='zan'></image>
+            赞
+          </view>
+          <view bindtap='comment' data-id='{{item.id}}'><image src='../../img/module/pl.png' class='lun'></image>评论</view>
+        </view>
+        <text>{{item.zan_count}}赞 · {{item.comment_count}}评论</text>
+      </view>
+      <view class='content' hidden='{{item.comment.length == 0 && item.zan_count == 0}}'>
+        <view hidden='{{item.zan_count == 0}}'>
+          <image src='../../img/module/zan1.png' class='zan'></image>
+          <text wx:for='{{item.zan_people}}' 
+            wx:key='{{index}}'
+            wx:for-item='i'
+          >{{i.nick_name}}{{index < item.zan_people.length-1 ? ' 、':''}}</text>
+        </view>
+        <view class='dialogue {{item.zan_count > 0 && "border-top"}}' hidden='{{item.comment.length == 0}}'>
+          <view wx:for='{{item.comment}}' wx:key='{{index}}' wx:for-item='i' bindtap="reply" data-msg='{{i}}'>
+            <text>{{i.nick_name}} </text>
+            <block wx:if='{{i.parent_id != 0}}'>回复 <text>{{m1.fn(item.comment,i.parent_id)}}</text></block>
+            <text>：</text>
+            {{i.content}}
+          </view>
+        </view>
+        <span></span><!-- 顶部小尖儿 -->
+      </view>
+    </view>
+  </view>
+  <view class='hint' hidden='{{!bottom}}'>———— 没有更多了 ————</view>
+</view>
+<!-- 排行榜 -->
+<view class='rankinglist' wx:elif='{{indeCode != 0 && rankingList}}'>
+  <view 
+    wx:for='{{rankingList}}' wx:key='{{index}}'
+    class='item {{index == 0 && "first"}} {{index < 3 && "top"}}'
+    hidden='{{index >= num }}'>
+    <view class='num'>{{index+1}}</view>
+    <view  class="{{index <= 2 && 'crown-box'}}">
+      <image class='crown' src='../../img/crown{{index+1}}.png'
+      wx:if='{{index <= 2}}'></image>
+      <image src='{{item.avatar_url}}'></image>
+    </view>
+    <view>
+      <view class='nickname'>{{item.user_name || item.nick_name || '未知'}}</view>
+      <text>掌握{{moduleCode==3?'句子':'单词'}}：{{indexCode == 1 ? item.today_learned_number : item.already_number}}</text>
+    </view>
+    <view class='days'>坚持：{{item.punch_days || '0'}}天</view>
+  </view>
+</view>
+<!-- 评论输入框 -->
+<view class='comment-form' wx:if='{{formFlag}}'>
+  <input type='text' placeholder='{{place}}' cursor-spacing='1' focus bindblur='blur' bindinput='iptCom'/>
+  <text bindtap='subCom'>提交</text>
+</view>
+
+
+

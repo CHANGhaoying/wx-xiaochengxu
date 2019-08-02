@@ -1,0 +1,50 @@
+<!--pages/ranking/ranking.wxml-->
+<view class='ranking' wx:if='{{imgFlag}}'>
+  <view class='nav'>
+    <li class='{{index == icode && "active"}}' 
+    wx:for='{{arr}}' data-index='{{index}}'
+    wx:key='{{index}}'
+    bindtap='tapNav'>{{item}}<i></i></li>
+  </view>
+  <view class='olist'>
+    <view 
+      wx:for='{{list}}' wx:key='{{index}}'
+      class='item {{index == 0 && "first"}} {{index < 3 && "top"}}'
+      hidden='{{index >= num }}'>
+      <view class='num'>{{index+1}}</view>
+      <view  class="{{index <= 2 && 'crown-box'}}">
+        <image class='crown' src='../../img/crown{{index+1}}.png'
+        wx:if='{{index <= 2}}'></image>
+        <image src='{{item.avatar_url}}'></image>
+      </view>
+      <view>
+        <view class='nickname'>{{item.user_name || item.nick_name}}</view>
+        <text>掌握单词：{{icode ? item.all_learned_number : item.today_learned_number}}</text>
+      </view>
+      <view class='days'>坚持：{{item.learned_days}}天</view>
+    </view>
+    <view class='hint' hidden='{{num != list.length}}'>———— 我是有底线的 ————</view>
+  </view>
+  <view class='foot'><!--底部空白块儿--></view>
+  <!-- 自己 -->
+  <view id='self-box' wx:if='{{mine}}'>
+    <view class='item' id='self'>
+      <image src='{{mine.avatar_url}}'></image>
+      <view>
+        <view class='nickname'>{{mine.user_name || mine.nick_name}}</view>
+        <text>掌握单词：{{icode ? mine.all_learned_number : mine.today_learned_number}}</text>
+      </view>
+      <view class='rank'>
+       {{icode ? '历史':'今日'}}排名：{{mine.mine_top}}
+      </view>
+      <button class='share' bindtap='share'>
+        <i class='iconfont icon-fenxiang'></i>
+      </button>
+    </view>
+  </view>
+</view>
+<view class='img-view' wx:else>
+  <image style='height:{{imgH}}px; width:{{imgW}}px' src='{{canvasUrl}}'></image>
+  <button type='primary' size='mini' bindtap='save'>保存要分享的图片到相册</button>
+</view>
+<canvas canvas-id='myCanvas' style='height:{{canvasH}}px; width:{{canvasW}}px'></canvas>

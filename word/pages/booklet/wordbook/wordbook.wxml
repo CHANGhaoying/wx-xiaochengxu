@@ -1,0 +1,81 @@
+<!--pages/booklet/wordbook/wordbook.wxml-->
+<view class='book'>
+  <!-- 已学习 错题本 收藏 -->
+  <view class='nav'>
+    <li wx:for="{{nav}}"
+      wx:key="{{index}}"
+      data-id="{{index}}"
+      bindtap='tapNav'
+      class='{{index==nav_code && "active"}}'
+    >
+      <span>
+        {{item}}
+        <i class='iconfont icon-arrow_down_full' wx:if='{{stageHide || index!=nav_code}}'></i>
+        <i class='iconfont icon-quanxianfuzhi' wx:else></i>
+      </span>
+      <view wx:if='{{index == 1}}' hidden='{{stageHide || nav_code!=1}}'>
+        <view wx:for='{{wordClass}}' wx:key='{{index}}'
+          class="{{type-1 == index && 'is'}}" 
+          catchtap="tapWC" data-type='{{index+1}}'
+        >{{item}}</view>
+      </view>
+    </li>
+  </view>
+  <!-- 阶段 -->
+  <view class='section' hidden='{{stageHide || nav_code==1}}'>
+    <view class='aside {{wData.length != 0 && "aside-bg"}}'>
+      <view class='{{index==stageIndex && "active"}}' 
+        wx:for='{{wData}}' 
+        wx:key='{{index}}'
+        bindtap='stage'
+        data-id='{{index}}'
+        data-stage='{{item.stage}}'>
+      {{item.stage_name}}</view>
+    </view>
+    <view class='group'>
+      <view bindtap='wordsFilt' 
+        wx:for='{{wData[stageIndex].group}}' 
+        data-msg='{{item}}' 
+        wx:key='{{index}}'>
+        <text>{{item.group_name}}</text><!--咖位下的组-->
+          <i class='iconfont icon-angle-right'></i>
+      </view>
+    </view>
+  </view>
+  <!-- 单词列表展示 -->
+  <view hidden='{{wordsHide && nav_code != 1 || !kongCode }}' class='words'>
+    <view class='title' hidden="{{wordsList.length==0}}">
+      <text>{{wordsData.stage_name}}{{wordsData.group_name}}</text><!--咖位下的组-->
+      <text class='date'>{{wordsData.create_time}}</text>
+    </view>
+    <block wx:for="{{wordsList}}" wx:key="{{index}}" 
+      wx:if='{{!code || nav_code != 1 || (code==item.wid && groupCode == item.group)}}'
+    >
+      <view hidden='{{item.wid == code && item.group == groupCode}}'bindtap='pull'
+        data-id='{{item.wid}}' data-group='{{item.group}}' data-index='{{index}}'
+        class='word-item {{index == item.word.length-1 && "last"}}'
+      >
+        <span>{{item.son.english_word}}</span>
+        <i class='iconfont icon-shengyin' catchtap='play' data-src='{{item.son.us_audio}}' wx:if='{{item.type != 2}}'></i>
+        <text class='right'>查看词意</text>
+      </view>
+      <view class='show-box' 
+        hidden='{{item.wid != code || item.group != groupCode}}' 
+        id='scroll{{item.wid}}' 
+        style="{{nav_code==1&&'border:none;padding-bottom:110rpx'}}"
+      >
+        <!-- 自定义组件 -->
+        <word-show data='{{item}}' col='{{item.is_collection}}' data-wid='{{item.wid}}'
+          bind:play='play' bind:shut = 'shut' bind:remove='remove' navcode='{{nav_code}}'
+        />
+      </view>
+    </block>
+    <view class='hint' hidden='{{!bottom}}' wx:if='{{nav_code==1}}'>———— 没有更多了 ————</view>
+  </view>
+  <button wx:if='{{nav_code == 1 && code}}' bindtap='toStudy'>开始练习</button>
+  <view class='kong' hidden='{{kongCode}}'>
+    <image src='http://202.85.213.24:8069/static/nocontent.png'></image>
+    <text>空空如也 ~~</text>
+  </view> 
+</view>
+

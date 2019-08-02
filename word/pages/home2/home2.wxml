@@ -1,0 +1,190 @@
+<!--pages/home2/home2.wxml-->
+<view class='home2' style='overflow:{{overflow}}'>
+  <view class='city'>
+    <image src='../../img/position.png' bindtap = 'showCity'></image>
+    <text bindtap = 'showCity'>{{defaultCity}}</text>
+    <i class='iconfont icon-angle-right' bindtap = 'showCity'></i>
+  </view>
+  <view class='all-class'>
+    <scroll-view scroll-x  hidden='{{classList.msg}}'>
+      <view class='{{index==0||index%3==0?"nav1":index%2==0?"nav3":"nav2"}} nav'
+        style='background:url(https://apiwx.yanxian.org/static/img/classbg{{index==0||index%3==0?"1":index%2==0?"3":"2"}}.png);background-size: cover;'
+        bindtap='toMyClass'
+        wx:for='{{classList}}'
+        wx:key='{{index}}'
+        data-class_id='{{item.id}}'>
+        <h2>{{item.class_name}}</h2>
+        <text>{{item.count}}人在打卡</text>
+      </view>
+    </scroll-view>
+    <view class='kong' hidden='{{!classList.msg}}'>
+      <image src='http://202.85.213.24:8069/static/nocontent.png'></image>
+      <text>暂无数据</text>
+    </view>
+  </view>
+  <view class='tap-control {{scrollTop>tapControlTop && "tap-control-position"}}'>
+    <view class='{{index==indexCode && "active"}}'
+      wx:for='{{navTitle}}'
+      wx:key='{{index}}'
+      bindtap='tapNav'
+      data-index='{{index}}'
+    >{{item}}</view>
+  </view>
+<!-- 今日打卡列表  -->
+  <view class='list' wx:if='{{todayList.length>0}}' hidden='{{!rankingHide}}'>
+    <wxs module='m1'>
+      function fn(arr,pID){
+        for(var i = 0;i < arr.length;i ++){
+          if(arr[i].id == pID){
+            return arr[i].nick_name
+          }
+        }
+      };
+      function zanFn(arr,id){
+        var str = '0';
+        for(var i = 0;i < arr.length;i ++){
+          if(arr[i] == id){
+            return '1'
+          }
+        }
+        return str;
+      }
+      module.exports = {fn: fn,zanFn: zanFn}
+    </wxs>
+    <view class='list-item'
+    wx:for='{{todayList}}'
+    wx:key='{{index}}'
+    style='{{index == 0 && "border: none;"}}'>
+      <view>
+        <view class='top-avatar-box'>
+          <image src='{{item.avatar_url}}' class='top-avatar'></image>
+          <view>
+            <text>{{item.nick_name}}</text>
+            <text>{{item.class_name}}，已打卡{{item.punch_days}}天</text>
+          </view>
+        </view>
+        <view style='height:65rpx;' bindtap="toMyClass" data-class_id="{{item.class_id}}">
+          <image wx:for='{{item.images}}'
+            wx:key = '{{index}}'
+            wx:if = '{{index <= 2}}'
+            src='{{item.avatar_url}}' 
+            class='team{{index+1}}'></image>
+          <icon class='iconfont icon-angle-right'></icon>
+        </view>
+      </view>        
+      <text>{{item.content}}</text>
+      <view class='comment'>
+        <view class='title'>
+          <view class='lz'>
+            <view bindtap='zan' data-id='{{item.id}}'>
+              <image src='../../img/module/zan{{m1.zanFn(zanArr,item.id)}}.png' class='zan'></image>
+              赞
+            </view>
+            <view bindtap='comment' data-id='{{item.id}}'><image src='../../img/module/pl.png' class='lun'></image>评论</view>
+          </view>
+          <text>{{item.zan_count}}赞 · {{item.comment.length}}评论</text>
+        </view>
+        <view class='content' hidden='{{item.comment.length == 0 && item.zan_count == 0}}'>
+          <view hidden='{{item.zan_count == 0}}'>
+            <image src='../../img/module/zan1.png' class='zan'></image>
+            <text wx:for='{{item.zan_people}}' 
+              wx:key='{{index}}'
+              wx:for-item='i'
+            >{{i.nick_name}}{{index < item.zan_people.length-1 ? ' 、':''}}</text>
+          </view>
+          <view class='dialogue {{item.zan_count > 0 && "border-top"}}' hidden='{{item.comment.length == 0}}'>
+            <view wx:for='{{item.comment}}' wx:key='{{index}}' wx:for-item='i' bindtap="reply" data-msg='{{i}}'>
+              <text>{{i.nick_name}} </text>
+              <block wx:if='{{i.parent_id != 0}}'>回复 <text>{{m1.fn(item.comment,i.parent_id)}}</text></block>
+              <text>：</text>
+              {{i.content}}
+            </view>
+          </view>
+          <span></span><!-- 顶部小尖儿 -->
+        </view>
+      </view>
+    </view>
+    <view class='hint' hidden='{{!bottom}}'>———— 没有更多了 ————</view>
+  </view>
+  <!-- 今日没人打卡 数据空 -->
+  <view class='kong' wx:else hidden='{{!rankingHide}}'>
+    <image src='http://202.85.213.24:8069/static/nocontent.png'></image>
+    <text>今日还没有人打卡</text>
+  </view>
+<!-- 排行榜 -->
+  <view class='rankinglist' hidden='{{rankingHide}}'>
+    <view 
+      wx:for='{{rankingList}}' wx:key='{{index}}'
+      class='item {{index == 0 && "first"}} {{index < 3 && "top"}}'
+      hidden='{{index >= num }}'>
+      <view class='num'>{{index+1}}</view>
+      <view  class="{{index <= 2 && 'crown-box'}}">
+        <image class='crown' src='../../img/crown{{index+1}}.png'
+        wx:if='{{index <= 2}}'></image>
+        <image src='{{item.avatar_url}}'></image>
+      </view>
+      <view>
+        <view class='nickname'>{{item.nick_name || '未知'}}</view>
+        <text>掌握单词：{{item.already_number}}</text>
+      </view>
+      <view class='days'>坚持：{{item.punch_days || '0'}}天</view>
+    </view>
+  </view>
+<!-- 城市列表 -->
+  <view class='cover' hidden='{{cityCover}}'>
+    <view>
+      <view class='close'>
+        <text bindtap='hideCity'>X</text>
+      </view>
+      <view class='btn-box'>
+        <button wx:for='{{cityList}}' 
+          wx:key='{{index}}'
+          bindtap='selectCity'
+          data-city='{{item.unitname}}'
+          data-unid='{{item.unid}}'
+          disabled='{{item.status == 0}}'
+        >{{item.unitname}}</button>
+        <button style="visibility:hidden" wx:if='{{cityList.length%3 == 1}}'></button>
+        <button style="visibility:hidden" wx:if='{{cityList.length%3 == 1 || cityList.length%3 == 2}}'></button>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 半透明遮罩 -->
+<view class='phone-cover' wx:if="{{phoneCover}}">
+  <!-- 绑定手机号弹框 wx:if="{{allow && phone}}" -->
+  <view class='phone'>
+    <text>绑定手机号</text>
+    <view class='txt'>绑定手机号可以获取更多功能哦~</view>
+    <input placeholder='输入手机号' 
+      type="number" 
+      maxlength="11"
+      bindinput='iptNum'></input>
+    <view class='group'>
+      <input placeholder='输入验证码'
+      type="number"
+      value='{{verificationCode}}'
+      bindinput='iptCode'></input>
+      <button bindtap='verify' disabled='{{codeTxt != "获取短信验证码"}}'>{{codeTxt}}</button>
+    </view>
+    <button bindtap='bindphone'>确定</button>
+  </view>
+</view>
+<!--用户授权-->
+<view class='allow-cover' wx:if='{{allowCover}}'>
+  <image src='https://apiwx.yanxian.org/static/img/success2.png'></image>
+  <text>您需要授权登录，才能开始使用</text>
+  <!-- <open-data type="userNickName"></open-data>
+  <open-data type="userCity"></open-data>
+  <open-data type="userAvatarUrl"></open-data> -->
+  <button 
+    bindgetuserinfo="allow"
+    open-type="getUserInfo"
+    >授权登录</button>
+</view>
+<!-- 评论输入框 -->
+<view class='comment-form' wx:if='{{formFlag}}'>
+  <input type='text' placeholder='{{place}}' cursor-spacing='1' focus bindblur='blur' bindinput='iptCom' bindconfirm='subCom'/>
+  <text bindtap='subCom'>提交</text>
+</view>

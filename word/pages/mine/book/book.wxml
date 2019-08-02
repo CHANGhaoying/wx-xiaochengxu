@@ -1,0 +1,10 @@
+<!--pages/mine/book/book.wxml-->
+<view class='module'>
+  <text>请选择学习题型</text>
+  <view>
+    <view><image src='../../../img/module/m1.png' bindtap='module'></image></view>
+    <view><image src='../../../img/module/m2.png' bindtap='module'></image></view>
+    <view><image src='../../../img/module/m3.png' bindtap='module' data-code='3'></image></view>
+    <view><image src='../../../img/module/m4.png' bindtap='module'></image></view>
+  </view>
+</view>

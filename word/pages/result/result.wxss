@@ -1,0 +1,243 @@
+/* pages/result/result.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  background:url('https://apiwx.yanxian.org/static/img/bg1.png');
+  background-size: cover;
+}
+.result{
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding-top:20rpx;
+}
+.card{
+  width: 664rpx;
+  height: 960rpx;
+  background: #fff;
+  margin: 0 auto;
+  border-radius: 18rpx;
+  background: radial-gradient(circle at -8rpx 605rpx, transparent 10px,#fff 11px) top left,
+            radial-gradient(circle at 342rpx 605rpx, transparent 10px, #fff 11px) right top;
+  background-size: 50.5% 100%;
+  background-repeat: no-repeat;
+}
+.card h1{
+  display: block;
+  padding: 40rpx 40rpx 15rpx;
+  font-size: 36rpx;
+  color: #474747;
+  border-bottom: 10rpx solid #f9f9f9;
+}
+.img{
+  text-align: center;
+  border-bottom: 8rpx solid #f3f3f3;
+  height: 490rpx;
+  width: 600rpx;
+  margin: 0 auto;
+}
+.img image{
+  width: 206rpx;
+  height: 206rpx;
+  border-radius: 50%;
+  border: 1rpx solid #ddd;
+  margin: 26rpx 0;
+}
+.name{
+  color: #474747;
+  font-size: 26rpx;
+}
+.num{
+  font-size: 48rpx;
+  color: #303030;
+  margin-top: 50rpx;
+}
+.percent{
+  display: flex;
+}
+.percent>view{
+  flex:1;
+  text-align: center;
+  padding-top: 32rpx;
+  color: #626262;
+  font-size: 30rpx;
+}
+.percent>view text{
+  display: block;
+  font-size: 60rpx;
+  color: #303030;
+  margin-top: 24rpx;
+}
+.percent .t-left{
+  border-right: 6rpx solid #f3f3f3;
+}
+.card>button{
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 39rpx;
+  height: 78rpx;
+  line-height: 78rpx;
+  width: 560rpx;
+  background: #f66c6c;
+  margin-top: 50rpx;
+}
+.btn-box{
+  display: flex;
+  margin: 40rpx;
+}
+.btn-box button{
+  width: 302rpx;
+  height: 78rpx;
+  line-height: 78rpx;
+  border-radius: 49rpx;
+  font-size: 30rpx;
+  color: #3e3e3e;
+  background: #9ecff6;
+}
+.btn-box .bounce-btn{
+  background: #ffd556;
+}
+.cover{
+  width: 100%;
+  height: 100%;
+  background: rgba(100,100,100,0.8);
+  position: absolute;
+  top: 0;
+}
+.cover icon{
+  position: absolute;
+  top: 80rpx;
+  right: 110rpx;
+  font-size: 70rpx;
+  color: #999;
+}
+.cover>view{
+  width: 538rpx;
+  height: 420rpx;
+  border-radius: 20rpx;
+  background: #FFF;
+  margin: 200rpx auto 0;
+  position: relative;
+  text-align: center;
+   box-sizing: border-box;
+  padding-top: 220rpx;
+}
+.cover image{
+  width: 330rpx;
+  height: 260rpx;
+  position: absolute;
+  top: -100rpx;
+  left: 50%;
+  margin-left: -165rpx;
+}
+.cover>view view{
+  font-size: 40rpx;
+  color: #ff7612;
+  padding-bottom: 30rpx;
+}
+.cover>view text{
+  font-size: 28rpx;
+  color: #676767;
+}
+
+/* 预览并保存分享图片 */
+.img-view {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background: #ddd;
+  padding-top: 20rpx; 
+  box-sizing: border-box;
+}
+.img-view image{
+  margin-bottom: 10rpx;
+}
+
+.img-view .leftBtn{
+  margin-right: 50rpx;
+}
+.img-view .rightBtn{
+  margin-left: 50rpx;
+  background:#9ecff6;
+  color:#555;
+}
+.img-view icon,.myclock-box icon{
+  position: absolute;
+  top:20rpx;
+  right: 46rpx;
+  font-size: 70rpx;
+  color: #ccc;
+}
+/* 打卡关闭图标 */
+.myclock-box icon{
+  right: 22rpx;
+}
+/* 画布 */
+canvas{
+  position: fixed;
+  top: 0;
+  left: 100%;
+}
+/* 打卡发帖 */
+.myclock-box{
+  width: 100%;
+  height: 100%;
+  background:#fff;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top:0;
+  left:0;
+}
+.myclock{
+  font-size: 30rpx;
+  padding: 50rpx;
+  box-sizing: border-box;
+}
+.myclock>view:first-child{
+  color: #EBC345;
+  margin-bottom: 30rpx;
+}
+.myclock image{
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 20rpx;
+  vertical-align: middle;
+}
+.myclock form{
+  display: block;
+  margin-top: 30rpx;
+  color: #808080;
+}
+.myclock textarea{
+  width: 100%;
+  height: 300rpx;
+  font-size: 28rpx;
+}
+.myclock form button{
+  margin: 30rpx 0;
+  background:#FDD756;
+  color: #403945;
+  font-size: 30rpx;
+  height: 80rpx;
+  line-height: 80rpx; 
+}
+.myclock form view{
+  text-align: right;
+  padding-right: 10rpx;
+}
+button::after{
+  border: none;
+}
+.myclock-box>view:last-child{
+  flex: 1;
+  background: #EDF1F3;
+}
+.sentence{
+  text-align: center;
+  padding: 50rpx 0;
+  color:#474747;
+  font-size: 36rpx;
+}

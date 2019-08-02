@@ -1,0 +1,14 @@
+
+/*
+home 主页（单词打卡）
+stage 学习阶段
+xkWords 小咖词汇
+result 背单词结算
+remember 背单词
+ranking 海淀一班排行榜
+booklet 单词本
+class 海淀一班班级管理
+*/
+
+/* 引入阿里图标 */
+@import "./utils/ali.wxss"

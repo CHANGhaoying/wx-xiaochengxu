@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "top-rate": "../../../components/top-rate/top-rate",
+    "sentence-show": "../../../components/sentence-show/sentence-show"
+  }
+}

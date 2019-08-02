@@ -1,0 +1,183 @@
+/* components/word-show/word-show.wxss */
+/* 五角星收藏图标 */
+.icon-shoucang{
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+  color: #ddd;
+  font-size: 30rpx;
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  z-index: 100;
+}
+/* 已收藏的五角星 */
+.col{
+  color: #ffd656;
+}
+/* 所有小喇叭图标 */
+i.icon-shengyin{
+  color: #ffd656;
+  width: 80rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 44rpx;
+  position: absolute;
+}
+.word-show{
+  width: 650rpx;
+  border-radius: 22rpx;
+  box-shadow: 0 0 30rpx #ddd;
+  margin: 30rpx auto 0;
+  box-sizing: border-box;
+  padding: 50rpx 20rpx 60rpx;
+  position: relative;
+}
+.word-show .word{
+  font-size: 60rpx;
+  color: #303030;
+  padding-left: 22rpx;
+}
+
+/* 音标后小喇叭图标 */
+.soundmark i{ 
+  top: 0;
+}
+
+.word-show .soundmark{
+  padding: 10rpx 22rpx;
+  position: relative;
+}
+.word-show .soundmark text{
+  font-size: 32rpx;
+  color: #999;
+}
+.meaning{
+  margin: 60rpx 15rpx 0;
+  border-bottom: 6rpx solid #f0f0f0;
+  padding: 0 0 30rpx 15rpx;
+}
+.meaning p,
+.example p{
+  display: block;
+  font-size: 30rpx;
+  color:#707070;
+  margin: 15rpx 0;
+}
+.example{
+  margin: 45rpx 25rpx 0;
+}
+.example h1{
+  font-size: 36rpx;
+  color: #303030;
+}
+.example>view{
+  position: relative;
+  padding-bottom: 0 55rpx 20rpx 0;
+  /* 英文单词 换行 */
+  word-wrap:break-word; 
+  /* 中文换行 */
+  white-space:pre-wrap;
+}
+.example i{
+  top: -17rpx;
+  right: 5rpx; 
+}
+.example p{
+  margin: 20rpx 0 0;
+  /* 英文单词 换行 */
+  word-wrap:break-word; 
+  /* 中文换行 */
+  white-space:pre-wrap;
+}
+/* 多义词 */
+.polyseme{
+  padding: 0 0 0 60rpx;
+  position: relative;
+  border: none;
+}
+/* 序号 */
+text.serial-num{
+  color: #fff;
+  background: #4bb163;
+  font-size: 30rpx;
+  width:34rpx;
+  height: 34rpx;
+  line-height: 34rpx;
+  text-align: center;
+  border-radius: 50%;
+  position: absolute;
+  top: 5rpx;
+  left: 0;
+}
+text.serial-num-red{
+  background: #f66c6c;
+}
+.polyseme>p{
+  margin: 20rpx 0;
+  /* 英文单词 换行 */
+  word-wrap:break-word; 
+  /* 中文换行 */
+  white-space:pre-wrap;
+}
+.uncommon{
+  padding-left: 80rpx;
+}
+.uncommon .serial-num{
+  width: 66rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  border-radius: 0;
+  font-size: 26rpx;
+}
+
+/* 同义词 */
+h2{
+  font-size: 46rpx;
+  color: #3e3e3e;
+  padding: 0 0 25rpx 60rpx;
+  display: block;
+}
+.synonyms{
+  padding: 0 36rpx 5rpx;
+}
+.synonyms>view{
+  border-top: 6rpx solid #f0f0f0;
+  padding: 40rpx 15rpx 30rpx 70rpx;
+  position: relative;
+} 
+
+.synonyms .meaning,.synonyms .example{
+  margin: 0;
+  padding:0;
+  border: none;
+}
+.synonyms .example>view{
+  padding-bottom:20rpx;
+}
+.synonyms h3{
+  font-size: 30rpx;
+  color: #aaa;
+  display: block;
+  margin-top: 50rpx;
+}
+.synonyms .serial-num{
+  top: 60rpx;
+  left: 15rpx;
+  border-radius:0;
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+.synonyms .word{
+  font-size: 48rpx;
+  padding: 0;
+}
+.synonyms .soundmark{
+  padding: 10rpx 0;
+  min-height: 50rpx;
+}
+/* 引入阿里图标 */
+@import "../../utils/ali.wxss"

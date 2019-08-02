@@ -1,0 +1,7 @@
+<!--components/top-rate/top-rate.wxml-->
+<view class='rate'>
+  <text>本组{{title}}</text>
+  <text> {{fraction}}</text>
+  <p><span style='width:{{rate}}'></span></p>
+  <text>{{rate}}</text>
+</view>

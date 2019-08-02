@@ -1,0 +1,115 @@
+
+<view class='list' wx:if='{{list}}'>
+  <wxs module='m1'>
+    function fn(arr,pID){
+      for(var i = 0;i < arr.length;i ++){
+        if(arr[i].id == pID){
+          return arr[i].nick_name
+        }
+      }
+    };
+    function timeFn(str){
+      var s = str.split(' ')[0]
+      return s
+    }
+    function zanFn(arr,id){
+      var str = '0';
+      for(var i = 0;i < arr.length;i ++){
+        if(arr[i] == id){
+          return '1'
+        }
+      }
+      return str;
+    }
+    module.exports = {fn: fn,timeFn: timeFn,zanFn:zanFn}
+  </wxs>
+  <!-- <view class='list-item'
+  wx:for='{{myClockList}}'
+  wx:key='{{index}}'
+  style='{{index == 0 && "border: none;"}}'>
+    <view>
+      <view class='top-avatar-box'>
+        <image src='{{item.avatar_url}}' class='top-avatar'></image>
+        <view>
+          <text>{{item.nick_name}}</text>
+          <text>{{item.class_name}}，打卡时间：{{m1.timeFn(item.create_time)}}</text>
+        </view>
+      </view>
+    </view>        
+    <text>{{item.content}}</text>
+    <view class='comment' hidden='{{item.comment.length == 0 && item.zan_count == 0}}'>
+      <view class='content'>
+        <view hidden='{{item.zan_count == 0}}'>
+          <image src='../../../img/module/zan1.png' class='zan'></image>
+          <text wx:for='{{item.zan_people}}' 
+            wx:key='{{index}}'
+            wx:for-item='i'
+          >{{i.nick_name}}{{index < item.zan_people.length-1 ? ' 、':''}}</text>
+        </view>
+        <view class='dialogue {{item.zan_count > 0 && "border-top"}}' hidden='{{item.comment.length == 0}}'>
+          <view wx:for='{{item.comment}}' wx:key='{{index}}' wx:for-item='i'>
+            <text>{{i.nick_name}} </text>
+            <block wx:if='{{i.parent_id != 0}}'>回复 <text>{{m1.fn(item.comment,i.parent_id)}}</text></block>
+            <text>：</text>
+            {{i.content}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view> -->
+  <view class='list-item'
+    wx:for='{{list}}'
+    wx:key='{{index}}'
+    style='{{index == 0 && "border: none;"}}'>
+    <view>
+      <view class='top-avatar-box'>
+        <image src='{{item.avatar_url}}' class='top-avatar'></image>
+        <view>
+          <text>{{item.nick_name}}</text>
+          <text>{{item.class_name}}，打卡时间：{{m1.timeFn(item.create_time)}}</text>
+        </view>
+      </view>
+    </view>        
+    <text>{{item.content}}</text>
+    <view class='comment'>
+      <view class='title'>
+        <view class='lz'>
+          <view bindtap='zan' data-id='{{item.id}}'>
+            <image src='../../../img/module/zan{{m1.zanFn(zanArr,item.id)}}.png' class='zan'></image>
+            赞
+          </view>
+          <view bindtap='comment' data-id='{{item.id}}'><image src='../../../img/module/pl.png' class='lun'></image>评论</view>
+        </view>
+        <text>{{item.zan_count}}赞 · {{item.comment.length}}评论</text>
+      </view>
+      <view class='content' hidden='{{item.comment.length == 0 && item.zan_count == 0}}'>
+        <view hidden='{{item.zan_count == 0}}'>
+          <image src='../../../img/module/zan1.png' class='zan'></image>
+          <text wx:for='{{item.zan_people}}' 
+            wx:key='{{index}}'
+            wx:for-item='i'
+          >{{i.nick_name}}{{index < item.zan_people.length-1 ? ' 、':''}}</text>
+        </view>
+        <view class='dialogue {{item.zan_count > 0 && "border-top"}}' hidden='{{item.comment.length == 0}}'>
+          <view wx:for='{{item.comment}}' wx:key='{{index}}' wx:for-item='i' bindtap="reply" data-msg='{{i}}'>
+            <text>{{i.nick_name}} </text>
+            <block wx:if='{{i.parent_id != 0}}'>回复 <text>{{m1.fn(item.comment,i.parent_id)}}</text></block>
+            <text>：</text>
+            {{i.content}}
+          </view>
+        </view>
+        <span></span><!-- 顶部小尖儿 -->
+      </view>
+    </view>
+  </view>
+  <view class='hint' hidden='{{!bottom}}'>———— 没有更多了 ————</view>
+</view>
+<view class='kong' wx:if='{{msg}}'>
+  <image src='http://202.85.213.24:8069/static/nocontent.png'></image>
+  <text>{{msg}}</text>
+</view>
+<!-- 评论输入框 -->
+<view class='comment-form' wx:if='{{formFlag}}'>
+  <input type='text' placeholder='{{place}}' cursor-spacing='1' focus bindblur='blur' bindinput='iptCom' bindconfirm='subCom'/>
+  <text bindtap='subCom'>提交</text>
+</view>

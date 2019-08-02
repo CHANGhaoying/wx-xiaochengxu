@@ -1,0 +1,159 @@
+/* pages/myclass/myclass.wxss */
+
+/* 主题页面部分↓ */
+.bg{
+  height: 460rpx;  
+  background: url('https://apiwx.yanxian.org/static/img/bg2.png') no-repeat;
+  background-size: 100%;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  
+}
+.bg>view{
+  display: flex;
+  height: 140rpx;
+  align-items: center;
+  font-size: 32rpx;
+  color: #fff;
+  position: relative;
+}
+.classname-box text{
+  font-size: 30rpx;
+  color:#b1c3f5;
+  display: block;
+  padding-top: 12rpx;
+}
+.bg text.btn{
+  background: #fdd756;
+  font-size: 28rpx;
+  color: #404040;
+  position: absolute;
+  bottom: 35rpx;
+  right:10rpx;
+  height: 60rpx;
+  padding: 0 20rpx;
+  text-align: center;
+  line-height: 60rpx;
+  border-radius: 28rpx;
+}
+/* 已加入 */
+.bg text.added-btn{
+  background: #909ff2;
+  color:#747ca7;
+}
+.bg image{
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 10rpx;
+  margin-right:20rpx;
+}
+ 
+/* 中间卡片部分 ↓ */
+.card{
+  box-sizing: border-box;
+  height: 570rpx;
+  width: 684rpx;
+  padding: 50rpx 46rpx 0;
+  background: #fff;
+  margin: -260rpx auto 0;
+  border-radius: 26rpx;
+  box-shadow: 0 0 10px #999;
+  position:relative;
+}
+
+.card>view{ 
+  display: flex;
+  align-items: center;
+}
+/* 阶段切换 */
+.card .stage{
+  position: absolute;
+  right: 56rpx;
+  font-size: 30rpx;
+  color: #7187F8;
+  
+}
+.card .stage image{
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 10rpx;
+}
+
+/* 头像 昵称 */
+.card>view:nth-child(2){
+  color:#404040;
+  font-size: 30rpx;
+  margin-top: 35rpx;
+}
+/* 头像盒子 */
+.card .avatar-box{
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 30rpx; 
+}
+
+.num-show{
+  display: flex;
+  padding-top: 90rpx;
+  justify-content: space-around;
+}
+
+.num-show text{
+  display: block;
+  text-align: center;
+}
+.num-show text:first-child{
+  font-size: 48rpx;
+  color: #353535;
+  margin-bottom: 10rpx;
+}
+.num-show text:last-child{
+  font-size: 24rpx;
+  color: #626262;
+}
+.to-study{
+  margin: 70rpx auto 0;
+  background: #fdd756;
+  color: #3e3e3e;
+  width: 460rpx;
+  height: 78rpx;
+  border-radius: 39rpx;
+  line-height: 78rpx;
+  font-size: 30rpx;
+}
+.to-study::after{
+  border: none;
+}
+
+
+/* 引入列表公共样式 包括tap导航*/
+@import "../../utils/top-list.wxss";
+.tap-control{
+  margin-top: 30rpx;
+}
+
+.kong{
+  text-align: center;
+  color: #C0C0C0;
+  font-size: 28rpx;
+}
+.kong image{
+  width: 220rpx;
+  height: 220rpx;
+  display: block;
+  margin: 0 auto;
+}
+/* 引入排行榜rankinglist样式*/
+@import "../../utils/rankinglist.wxss";
+
+/* 没有更多了 */
+.hint{
+  padding-bottom: 30rpx;
+  color: #aaa;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+

@@ -1,0 +1,315 @@
+/* pages/allow/allow.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+
+/* 遮罩层 */
+.cover,.cover2{
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.2);
+  position:absolute;
+  top: 0;
+  z-index: 10;
+}
+.cover2{
+  background: #3252f5;
+  color: #fff; 
+  text-align: center;
+  font-size: 30rpx;
+}
+.cover2 image{
+  display: block;
+  margin: 80rpx auto;
+  width: 260rpx;
+  height: 260rpx;
+  border-radius: 50%;
+}
+.cover2 button{
+  background: #ffd556;
+  margin-top: 100rpx;
+  width: 80%;
+  height: 80rpx;
+  border-radius: 40rpx;
+  line-height: 80rpx;
+  font-size: 35rpx;
+  color: #3e3e3e; 
+}
+.cover2 button::after{
+  border: none;
+}
+
+  /* 绑定手机号 */
+.phone{
+  width: 600rpx;
+  height: 670rpx;
+  border-radius: 20rpx;
+  margin: 250rpx auto 0;
+  background: #fff;
+  font-size: 34rpx;
+  color: #242424;
+  text-align: center;
+  padding: 68rpx 66rpx;
+  box-sizing: border-box;
+}
+.phone view.txt{
+  color: #7d7d7e;
+  font-size: 28rpx;
+  margin: 26rpx 0 66rpx;
+}
+.phone input{
+  border: 1rpx solid #a3a3a3;
+  height: 70rpx;
+  background: #f6f6f6;
+  margin-bottom: 26rpx;
+  font-size: 26rpx;
+  text-align: left;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+}
+.phone .group{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 54rpx;
+}
+.phone .group input,
+.phone .group button{
+  width:242rpx;
+  margin: 0;
+}
+.phone .group button{
+  width:218rpx;
+  font-size: 22rpx;
+  background: #f66c6c;
+  border-radius: 0;
+  line-height: 70rpx;
+  color: #fff;
+}
+.phone button::after{
+  border: none;
+}
+.phone>button:last-child{
+  background: #4bb163;
+  width: 352rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  line-height: 80rpx;
+  color: #fff;
+  font-size: 34rpx;
+}
+  /* 绑定手机号end */
+/* 遮罩层end */
+
+/* 主题页面部分↓ */
+
+.bg{
+  height: 500rpx;  
+  background: url('https://apiwx.yanxian.org/static/bg2.png') no-repeat;
+  background-size: 100%;
+  padding: 30rpx 78rpx 0;
+  box-sizing: border-box;
+}
+.bg>view{ 
+  display: flex;
+  align-items: center;
+}
+.bg>view:first-child{ 
+  color: #fff;
+  font-size: 36rpx;
+}
+/* 头像盒子 */
+.bg .avatar-box{ 
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 20rpx; 
+}
+.bg .username-box view{ 
+  background:#ffd556;
+  color: #3e3e3e;
+  font-size: 24rpx;
+  height: 36rpx;
+  line-height: 32rpx;
+  padding:0 5rpx 0 15rpx;
+  border-radius: 17rpx;
+}
+.bg .username-box text{ 
+  padding-left: 10rpx;
+}
+/* 阶段切换 */
+.bg>view:last-child{
+   position: relative;
+  float:right;
+  font-size: 34rpx;
+  color: #b5beef;
+}
+.bg>view:last-child image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 10rpx;
+}
+ /* 点击小手 */
+.icon-dianji{
+  position: absolute;
+  font-size: 80rpx;
+  color: #f66c6c;
+  font-weight: bold;
+  top: 0;
+  right: 30rpx;
+}
+/* 中间卡片部分 ↓ */
+.card{
+  box-sizing: border-box;
+  height: 592rpx;
+  width: 684rpx;
+  padding: 40rpx 40rpx 20rpx;
+  background: #fff;
+  margin: -260rpx auto 0;
+  border-radius: 26rpx;
+  box-shadow: 0 0 10px #999;
+}
+.card swiper{
+  height: 100%;
+}
+.left-item view{
+  text-align: center;
+}
+.dk-title{
+  margin: 20rpx 0 30rpx;
+  font-size: 40rpx;
+  color: #242424;
+}
+.dk-num{
+  font-size: 90rpx;
+  color: #353535;
+}
+.dk-txt{
+  font-size: 30rpx;
+  color: #626262;
+}
+.dk-section{
+  border-top: 8rpx solid #f9f8f8;
+  display: flex;
+  margin-top: 30rpx;
+  padding-top: 30rpx;
+  justify-content: space-around;
+}
+.dk-section text{
+  display: block;
+}
+.dk-section text:first-child{
+  font-size: 48rpx;
+  color: #353535;
+  margin-bottom: 22rpx;
+}
+.dk-section text:last-child{
+  font-size: 24rpx;
+  color: #626262;
+}
+
+.right-item>view:first-child{
+    text-align: center;
+    font-size: 35rpx;
+}
+.right-item .month{
+    display: flex;
+    justify-content: space-between;
+    color: #999;
+    font-size: 26rpx;
+    padding: 25rpx 20rpx 0;
+}
+.right-item .day{
+    color: #000;
+    font-size: 26rpx;
+    padding:15rpx 6rpx;
+    display: flex;
+}
+.right-item .day text{
+  display: inline-block;
+  flex: 1;
+  text-align: center;
+}
+
+.right-item .date{
+    display: flex;
+    flex-wrap: wrap;
+}
+.right-item .date view{
+    width: 14.25%;
+    height: 55rpx;
+    line-height: 55rpx;
+    font-size: 26rpx;
+    color: #666;
+    text-align: center;
+}
+.right-item .date .is-day text{
+  color: #fff;
+  background:#3252f5;
+  width: 52rpx;
+  height: 52rpx;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+.month .cut{
+  width: 100rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.month .next{
+  text-align: right;
+}
+/* 主页中间卡片部分 ↑ */
+
+.to-study{
+  margin: 48rpx auto 96rpx;
+  background: #ffd556;
+  color: #3e3e3e;
+  width: 460rpx;
+  height: 78rpx;
+  border-radius: 39rpx;
+  line-height: 78rpx;
+  font-size: 30rpx;
+}
+.to-study::after{
+  border: none;
+}
+.foot-nav{
+  display: flex;
+  justify-content: space-around;
+  padding: 0 60rpx;
+}
+.foot-nav view{
+  position: relative;
+  flex: 1;
+  height: 110rpx;
+}
+.foot-nav image{
+  display: block;
+  margin: 0 auto;
+}
+.foot-nav text{
+  width: 100%;
+  text-align: center;
+  font-size: 30rpx;
+  color: #555;
+  position: absolute;
+  bottom: 0;
+}
+.cnj{
+  width: 44rpx;
+  height: 43rpx;
+}
+.phb{
+  width: 61rpx;
+  height: 60rpx;
+}
+.dcb{
+  width: 46rpx;
+  height: 41rpx;
+}
+

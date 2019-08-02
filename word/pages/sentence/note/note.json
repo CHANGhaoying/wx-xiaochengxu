@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "sentence-show": "../../../components/sentence-show/sentence-show"
+  },
+  "navigationBarTitleText": "长难句记录"
+}

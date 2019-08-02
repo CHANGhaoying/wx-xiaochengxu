@@ -1,0 +1,22 @@
+/* pages/myclock/myclock.wxss */
+/* 引入列表公共样式  包括tap导航*/
+@import "../../../utils/top-list.wxss";
+.kong{
+  text-align: center;
+  color: #C0C0C0;
+  font-size: 32rpx;
+  padding-top: 30rpx;
+}
+.kong image{
+  width: 280rpx;
+  height: 280rpx;
+  display: block;
+  margin: 0 auto 20rpx;
+}
+/* 提示：我是有底线的 */
+.hint{
+  padding-bottom: 30rpx;
+  color: #aaa;
+  text-align: center;
+  font-size: 28rpx;
+}

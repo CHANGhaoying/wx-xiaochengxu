@@ -1,0 +1,58 @@
+<!--pages/remember/remember.wxml-->
+<view class='remember'>
+  <!-- 头部进度条 自定义组件 -->
+  <top-rate title='单词' rate='{{rate}}' fraction='{{list[i].son.currentNumber}}/{{list.count}}' wx:if='{{!err}}'/>
+  <view hidden='{{hide}}'>
+    <!-- "一词多义 熟词僻义" 卡片 -->
+    <view class='card card-double' wx:if='{{type==3||type==4}}'>
+      <i class='iconfont icon-shoucang {{col==1 &&"col"}}' 
+      bindtap='collect'
+      data-msg='{{list[i]}}'></i>
+      <text class='word'>{{list[i].son.english_word}}</text>
+      <view class='soundmark'>
+        <text>{{list[i].son.us_phonetic}}</text><!--音标-->
+        <i class='iconfont icon-shengyin' bindtap='play' data-src='{{list[i].son.us_audio}}'></i>
+      </view>
+      <view class='topic'>{{list[i].son.select_title}}</view>
+    </view>
+    <!-- 普通卡片 -->
+    <view class='card {{type==2 && "synonyms"}}' wx:else>
+      <i class='iconfont icon-shoucang {{col==1 && "col"}}' 
+      bindtap='collect'
+      data-msg='{{list[i]}}'></i>
+      <text class='word'>{{list[i].son.english_word}}</text>
+      <view class='soundmark'>
+        <block wx:if='{{type==2}}'><text style='margin-top: 25rpx;'>{{list[i].son.select_title}}</text></block>
+        <block wx:else>
+        <text>{{list[i].son.us_phonetic}}</text><!--音标 -->
+        <i class='iconfont icon-shengyin' bindtap='play' data-src='{{list[i].son.us_audio}}'></i>
+        </block>
+      </view>
+    </view>
+    <view class='btns'><!-- 按钮组  -->
+      <wxs module='m1'>
+        var some = function(arr,x){
+           for(i = 0; i < arr.length; i ++){
+            if(arr[i] == x)return true
+           }
+        };
+        module.exports.some = some;
+      </wxs>
+      <view wx:for='{{list[i].son.options}}' wx:key='{{index}}'>
+        <button bindtap='answer' 
+          disabled='{{disabled && !m1.some(useropts,item.optvalue) && !m1.some(list[i].son.answer,item.optvalue)}}' 
+          class='{{m1.some(list[i].son.answer,item.optvalue)&&(m1.some(useropts,item.optvalue)||(type!=4&&useropts.length==1)||useropts.length==2)?"yes":m1.some(useropts,item.optvalue)?"no":""}}' 
+          data-id="{{item.optvalue}}"
+          data-answer='{{list[i].son.answer}}'
+        >{{item.opttitle}}</button>
+        <image src='../../img/yes.png'></image>
+        <image src='../../img/no.png'></image>
+      </view>
+    </view>
+  </view>
+  <view hidden='{{!hide}}'>
+    <!-- 单词词意例句展示卡 -->
+    <word-show data='{{list[i]}}' col='{{col}}' bind:play='play'/>
+    <button class='next' bindtap='next' disabled='{{nextDisabled}}'>下一个</button>
+  </view> 
+</view>

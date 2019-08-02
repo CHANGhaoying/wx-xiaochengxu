@@ -1,0 +1,133 @@
+/* pages/stage/stage.wxss */
+page{
+  height: 100%;
+}
+.section{
+  min-height: 100%;
+  background:#eee;
+  padding: 30rpx 55rpx 20rpx;
+}
+.section image{
+  width: 159rpx;
+  height: 179rpx;
+  margin-right: 20rpx;
+  vertical-align: middle;
+}
+.cihui h1{
+  color: #242424;
+  font-size: 32rpx;
+}
+.cihui>view{
+  margin: 12rpx 0 30rpx;
+  display: flex;
+  border-radius: 12rpx;
+  padding: 40rpx 22rpx;
+  background: #fff;
+  position: relative;
+}
+.cihui h2{
+  color: #242424;
+  font-size: 30rpx;
+  margin: 25rpx 0 6rpx;
+  display: block;
+}
+.cihui p{
+  display: block;
+  font-size: 22rpx;
+  color: #aaa;
+  margin-top: 10rpx;
+}
+
+.cihui p text{
+  padding: 0 18rpx;
+  border-left: 1rpx solid #ddd;
+}
+.cihui p text:first-child{
+  padding-left: 0;
+  border-left: none;
+}
+/* 右上角黄色标签样式 */
+.section .lable{
+  background: #ffd656;
+  width: 64rpx;
+  height: 72rpx;
+  font-size: 20rpx;
+  color: #70623e;
+  box-sizing: border-box;
+  padding-top: 8rpx;
+  text-align: center;
+  position: absolute;
+  right: 38rpx;
+  top: -20rpx;
+}
+.lable span{
+  width: 0;
+  height: 0;
+  border-style: solid;
+  position: absolute;
+}
+.lable span.top{
+  border-color: transparent #eeb539 #eeb539 transparent;
+  border-width: 10rpx 6rpx;
+  left: -10rpx;
+  top: 0;
+}
+.lable span.left{
+  border-color: #ffd656 transparent transparent  #ffd656;
+  border-width: 5rpx 16rpx;
+  bottom: -7rpx;
+  left: 0;
+}
+.lable span.right{
+  border-color: #ffd656 #ffd656 transparent transparent;
+  border-width: 5rpx 16rpx;
+  bottom: -7rpx;
+  right: 0;
+}
+.to-study{
+  margin: 0 auto 20rpx;
+  background: #fdd756;
+  color: #3e3e3e;
+  width: 460rpx;
+  height: 78rpx;
+  border-radius: 39rpx;
+  line-height: 78rpx;
+  font-size: 30rpx;
+}
+.to-study::after{
+  border: none;
+}
+
+/* 空 无数据 */
+.kong{
+  text-align: center;
+  padding-top: 160rpx;
+  color: #C0C0C0;
+  font-size: 32rpx;
+  box-sizing: border-box;
+}
+.kong image{
+  width: 280rpx;
+  height: 280rpx;
+  display: block;
+  margin: 0 auto 30rpx;
+}
+.module{
+  padding: 60rpx 32rpx 0;
+}
+.module>view{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 40rpx;
+}
+.module text{
+  font-size: 32rpx;
+  color: #242424;
+  padding-left: 15rpx;
+}
+.module image{
+  border-radius: 10rpx;
+  width: 336rpx;
+  height: 296rpx;
+}

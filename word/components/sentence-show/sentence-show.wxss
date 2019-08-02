@@ -1,0 +1,254 @@
+/* components/sentence-show/sentence-show.wxss */
+/* 长难句展示部分 */
+.icon-shoucang{
+  color: #ddd;
+  font-size: 40rpx;
+  float: right;
+  margin-top: -15rpx;
+  width: 80rpx;
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.col{color: #ffd656;}
+.content{
+  font-size: 34rpx;
+  color: #626262;
+  margin: 40rpx 0 20rpx;
+  line-height: 50rpx;
+}
+.get-word{background:#f0f0f0;}
+.unfold{
+  padding: 56rpx 55rpx 0;
+}
+.unfold .headline{
+  position: relative;
+}
+.unfold .content{
+  margin-top:30rpx;
+}
+.unfold .sentence .content{
+  font-size: 38rpx;
+}
+.sentence .content text{
+  display: inline-block;
+  height: 64rpx;
+  line-height: 64rpx;
+  margin-right: 10rpx;
+}
+.headline text{
+  color: #191919;
+  font-size: 38rpx;
+  margin:0 22rpx 0 60rpx;
+}
+.headline image{
+  width: 46rpx;
+  height: 46rpx;
+  position: absolute;
+  left: 0;
+  top: 5rpx;
+}
+.headline span{
+  color: #c2c2c2;
+  font-size: 26rpx;
+}
+.user-translation{
+  background:#4BB163;
+  color: #fff;
+  font-size: 30rpx;
+  padding: 26rpx;
+  border-radius: 14rpx;
+  margin:26rpx 0 60rpx; 
+}
+/*  */
+h3{
+  margin-left: -20rpx;
+  color: #191919;
+  font-size: 34rpx;
+  display: inline-block;
+}
+.diff-word h3{
+  margin: 30rpx 0 20rpx -20rpx;
+}
+.diff-word>view>view{
+  font-size: 30rpx;
+  color: #626262;
+}
+.sentence-part{
+  margin-top: 60rpx;
+}
+.sentence-part .content text{
+  margin-right: 5rpx;
+}
+/* 成分分析 */
+.element{
+  background: #f0f0f0;
+  margin: 30rpx 0;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.element h4{
+  font-size: 30rpx;
+  display: block;
+  margin-bottom: 5rpx;
+}
+.ele1{
+  color: #fc8383;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+.ele1 text{
+  margin-right: 10rpx;
+}
+.ele2{
+  color: #8e8e8e;
+  font-size: 26rpx;
+}
+.ele2 view{
+  display: flex;
+  flex-wrap: wrap;
+}
+.ele2 text{
+  width: 50%;
+  margin-top: 5rpx;
+}
+/*  */
+.text{
+  margin-top: 60rpx;
+}
+.txt .content{
+  font-size: 30rpx;
+}
+
+
+/* 各成分样式 */
+.subject,.object{
+  border-bottom: 1rpx solid;
+}
+.predicate{
+  border-bottom: 8rpx double;
+}
+.appositive{
+  border-bottom: 1rpx dashed;
+}
+
+/* 遮罩 */
+.cover{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  top:0;
+  left: 0;
+  z-index: 11;
+}
+.cover .msg{
+  color: #303030;
+  font-size: 36rpx;
+  text-align: center;
+  padding-top:100rpx; 
+}
+.sash-window{
+  height: 50%;
+  width: 100%;
+  background: #fff;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding-bottom: 36rpx;
+  box-sizing: border-box;
+}
+.top-btn{
+  height: 60rpx;
+  width: 170rpx;
+  margin: -30rpx auto 0;
+  background: #fff;
+  border-radius: 6rpx;
+  transform:perspective(15rpx) rotateX(1deg);
+  padding-top: 8rpx;
+}
+.top-btn span{
+  display: block;
+  width: 70rpx;
+  height: 5rpx;
+  background: #ccc;
+  margin: 8rpx auto;
+}
+.sash-window-body{
+  height: 100%;
+  overflow: auto;
+  padding: 20rpx 50rpx;
+  box-sizing: border-box;
+}
+/* 推拉窗里单词展示 */
+
+.word{
+  font-size: 60rpx;
+  color: #303030;
+  padding-left: 22rpx;
+} 
+.soundmark{
+  padding: 10rpx 22rpx;
+}
+.soundmark text{
+  font-size: 32rpx;
+  color: #999;
+}
+.meaning{
+  margin: 30rpx 15rpx 0;
+  padding: 0 0 30rpx 15rpx;
+}
+.meaning p,
+.example p{
+  display: block;
+  font-size: 30rpx;
+  color:#707070;
+  margin: 15rpx 0;
+}
+.example{
+  margin: 0 20rpx;
+}
+.example h1{
+  font-size: 36rpx;
+  color: #303030;
+}
+.example>view{
+  padding-bottom: 20rpx;
+  /* 英文单词 换行 */
+  word-wrap:break-word; 
+  /* 中文换行 */
+  white-space:pre-wrap;
+}
+
+.example p{
+  margin: 20rpx 0 0;
+  /* 英文单词 换行 */
+  word-wrap:break-word; 
+  /* 中文换行 */
+  white-space:pre-wrap;
+}
+
+/* 引入阿里图标 */
+@import "../../utils/ali.wxss";
+
+/* 关闭图标 */
+.sash-window .icon-guanbi{
+  color: #999;
+  font-size: 70rpx;
+  position: absolute;
+  top: 25rpx;
+  right: 50rpx;
+}
+.icon-shengyin{
+  display: inline-block;
+  color: #ffd656;
+  font-size: 40rpx;
+  vertical-align: middle;
+  width: 80rpx;
+  text-align: center;
+  height: 60rpx;
+}
+.soundmark .icon-shengyin{
+  height: 80rpx;
+  line-height: 80rpx;
+}

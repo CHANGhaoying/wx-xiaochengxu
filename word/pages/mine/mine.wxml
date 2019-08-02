@@ -1,0 +1,39 @@
+<!--pages/mine/mine.wxml-->
+<view class='bg'>
+  <!-- <view style='height:{{btn.height}}px;line-height:{{btn.height}}px'>我的</view> -->
+  <view class="avatar-box">
+    <open-data type="userAvatarUrl"></open-data>
+  </view>
+  <text wx:if='{{dat.user_name}}'>{{dat.user_name}}</text>
+  <open-data type="userNickName" class='user-name' wx:if='{{!dat.user_name}}'></open-data>
+  <view>{{dat.mobile}}</view>
+</view>
+
+<view class='section'>
+  <view>
+    <view bindtap='toUserClass'>
+      <image src='../../img/quanzi.png'></image>
+      <text>我的班级</text>
+    </view>
+    <view bindtap='myclock'>
+      <image src='../../img/daka.png'></image>
+      <text>我的打卡</text>
+    </view>
+    <view bindtap='toH5page'>
+      <image src='../../img/yxkt.png'></image>
+      <text>研线课堂</text>
+    </view>
+  </view>
+  <view>
+    <view bindtap='toBook'>
+      <image src='../../img/yijian.png'></image>
+      <text>学习记录</text>
+    </view>
+    <view class="news">
+      <!-- <span wx:if='{{num}}'>{{num}}</span>
+      <image src='../../img/news.png'></image>
+      <text>新消息</text> -->
+    </view>
+    <view></view>
+  </view>
+</view>
